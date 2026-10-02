@@ -1,6 +1,6 @@
 {
   "name": "resume-graph",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Turn a resume into an interactive graph page for a personal website: jobs, studies and projects in groups, and skills that connect every place they were used.",
   "author": { "name": "Varun Moka" },
   "license": "MIT"
