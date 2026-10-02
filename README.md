@@ -63,8 +63,9 @@ examples in `view/data/`) and build:
 
 - http://localhost:8131/view/ is the graph (`?p=short` and `?p=long` for the other samples).
   All sample people and companies are made up.
-- http://localhost:8131/ is an upload page: drop a data file, see the graph, edit, download.
-  Reading a resume straight from this page needs a server part (`api/extract`) that is not built.
+- http://localhost:8131/ is the front page: examples, how to make your own, and a drop zone
+  that opens a data file the tool made so you can see the graph, edit it and download the page.
+  It does not read resumes; the tool does that inside your agent.
 
 ## What is where
 
