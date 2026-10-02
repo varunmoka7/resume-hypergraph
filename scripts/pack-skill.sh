@@ -1,6 +1,8 @@
 #!/bin/sh
-# Packs the skill as one self-contained zip for upload to Claude on the web (Settings, Capabilities, Skills).
-# Usage: sh scripts/pack-skill.sh   ->   dist/resume-graph.zip
+# Packs the skill as one self-contained folder and zip: dist/resume-graph/ and dist/resume-graph.zip.
+# The zip is for upload to Claude on the web (Settings, Capabilities, Skills). The folder can be copied into any
+# agent's skills directory (~/.codex/skills, ~/.agents/skills, ~/.claude/skills).
+# Usage: sh scripts/pack-skill.sh
 set -e
 cd "$(dirname "$0")/.."
 rm -rf dist && mkdir -p dist/resume-graph/scripts

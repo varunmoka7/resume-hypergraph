@@ -7,7 +7,7 @@ one sentence saying what was done there with it.
 
 The result is one HTML file. Plain HTML, CSS and JavaScript, no build step, no libraries.
 
-## Three ways to use it
+## Ways to use it
 
 **1. With Claude Code (the full version).** Clone this repo, then inside Claude Code:
 
@@ -15,8 +15,9 @@ The result is one HTML file. Plain HTML, CSS and JavaScript, no build step, no l
     /plugin install resume-graph
 
 Then give it a resume: `/resume-graph:resume-graph my-cv.pdf`, or just say "turn my resume
-into a graph". It reads the resume, looks up each employer and school on the web, writes
-the sentences, checks them against the resume, and builds the page.
+into a graph". It runs in one go without questions: it reads the resume, starts one agent per
+employer and school to look each up on the web, fetches their logos, writes the sentences,
+has a separate agent check them against the resume, builds the page and opens it.
 
 | Command | Step |
 |---|---|
@@ -31,7 +32,19 @@ the sentences, checks them against the resume, and builds the page.
 under Settings, Capabilities, Skills, then share a resume in a chat and ask for a graph.
 Not yet tested there.
 
-**3. By hand.** Write the data file yourself (format: `skills/resume-graph/PROFILE-FORMAT.md`,
+**3. With Codex, Gemini CLI, Cursor or another agent.** The skill is plain instructions plus one
+Node script, so any agent that reads files and runs commands can follow it.
+
+| Agent | How |
+|---|---|
+| Any of them | Open this repo in the agent and say "turn my resume at ~/cv.pdf into a graph". `AGENTS.md` tells it what to do. |
+| Codex | `sh scripts/pack-skill.sh`, then `cp -R dist/resume-graph ~/.codex/skills/`. The skill is then available in every project. |
+| Gemini CLI | `gemini extensions install /path/to/resume-hypergraph` |
+| Others with a skills folder | Copy `dist/resume-graph` into it (`~/.agents/skills/` is common). |
+
+Agents without subagents do the company research one entry at a time; the result is the same.
+
+**4. By hand.** Write the data file yourself (format: `skills/resume-graph/PROFILE-FORMAT.md`,
 examples in `view/data/`) and build:
 
     node scripts/profile.mjs build my-profile.json index.html
@@ -59,6 +72,9 @@ examples in `view/data/`) and build:
 |---|---|
 | `view/` | The page: `index.html`, `graph.js`, `style.css`, sample data |
 | `skills/` | The Claude skill and its steps |
+| `agents/` | The two agents the skill starts: one profiles an entry, one checks the result |
+| `AGENTS.md` | Instructions for Codex, Gemini CLI and other agents |
+| `examples/` | A made-up resume to try it on |
 | `scripts/profile.mjs` | Checks a data file and builds the one-file page |
 | `scripts/check-layout.py` | Loads every sample at four screen sizes, fails on overlapping labels |
 | `research/` | Notes on resume sections across professions and on existing resume formats |

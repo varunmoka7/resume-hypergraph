@@ -3,6 +3,7 @@
 //   node scripts/profile.mjs check <profile.json> [resume.txt]
 //   node scripts/profile.mjs build <profile.json> <out.html> [resume.txt]
 //   node scripts/profile.mjs logos <profile.json>     fetch a logo for every entry that has org.url and no logo
+//   node scripts/profile.mjs links <profile.json>     open every web address in the profile; fails on one that is gone
 // With resume.txt, every number in the profile's sentences must also appear in the resume.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -106,24 +107,48 @@ export async function findLogo(siteUrl) {
   return null;
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url) && process.argv[2] === 'logos') {
-  const file = process.argv[3], d = JSON.parse(fs.readFileSync(file, 'utf8'));
-  const todo = (d.nodes || []).filter(n => !n.logo && n.org && n.org.url);
-  const found = await Promise.all(todo.map(n => findLogo(n.org.url).catch(() => null)));
-  todo.forEach((n, i) => { if (found[i]) n.logo = found[i]; console.log(`${found[i] ? 'logo   ' : 'no logo'} ${n.id}  ${n.org.url}`); });
-  fs.writeFileSync(file, JSON.stringify(d, null, 2) + '\n');
-  console.log(`${found.filter(Boolean).length} of ${todo.length} logos added to ${file}`);
-} else if (process.argv[1] === fileURLToPath(import.meta.url)) {
+// Every web address in the profile: gone, moved, or fine.
+export async function checkLinks(d) {
+  const urls = [...new Set([...(d.links || []).map(l => l.url), ...(d.nodes || []).flatMap(n => n.org ? [n.org.url, n.org.source] : [])].filter(u => /^https?:/i.test(u || '')))];
+  return Promise.all(urls.map(async u => {
+    try {
+      const r = await fetch(u, { redirect: 'follow', signal: AbortSignal.timeout(10000), headers: { 'user-agent': 'Mozilla/5.0 (resume-hypergraph)' } });
+      if (r.status === 404 || r.status === 410) return [u, 'gone', `status ${r.status}`];
+      if (!r.ok) return [u, 'unconfirmed', `status ${r.status}, the site may refuse scripts; open it yourself`];
+      const host = x => new URL(x).hostname.replace(/^www\./, ''); // a redirect to /en or /de on the same site is not a move
+      return host(r.url) === host(u) ? [u, 'ok', ''] : [u, 'moved', `now ${r.url}`];
+    } catch { return [u, 'gone', 'did not open']; }
+  }));
+}
+
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const [cmd, file, a, b] = process.argv.slice(2), isBuild = cmd === 'build', resumeFile = isBuild ? b : a;
-  if (!['check', 'build'].includes(cmd) || !file || (isBuild && !a)) { console.error('usage: profile.mjs check <profile.json> [resume.txt]\n       profile.mjs build <profile.json> <out.html> [resume.txt]\n       profile.mjs logos <profile.json>'); process.exit(2); }
+  if (!['check', 'build', 'logos', 'links'].includes(cmd) || !file || (isBuild && !a)) {
+    console.error('usage: profile.mjs check <profile.json> [resume.txt]\n       profile.mjs build <profile.json> <out.html> [resume.txt]\n       profile.mjs logos <profile.json>\n       profile.mjs links <profile.json>');
+    process.exit(2);
+  }
   const d = JSON.parse(fs.readFileSync(file, 'utf8'));
-  const { errors, warnings } = check(d, resumeFile ? fs.readFileSync(resumeFile, 'utf8') : null);
-  warnings.forEach(w => console.log('warning: ' + w));
-  errors.forEach(e => console.log('error:   ' + e));
-  console.log(`${file}: ${(d.nodes || []).length} entries, ${(d.skills || []).length} skills, ${errors.length} errors, ${warnings.length} warnings`);
-  if (errors.length) process.exit(1);
-  if (isBuild) {
-    fs.writeFileSync(a, build(d, path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'view')));
-    console.log(`wrote ${a}`);
+  if (cmd === 'logos') {
+    const todo = (d.nodes || []).filter(n => !n.logo && n.org && n.org.url);
+    const found = await Promise.all(todo.map(n => findLogo(n.org.url).catch(() => null)));
+    todo.forEach((n, i) => { if (found[i]) n.logo = found[i]; console.log(`${found[i] ? 'logo   ' : 'no logo'} ${n.id}  ${n.org.url}`); });
+    fs.writeFileSync(file, JSON.stringify(d, null, 2) + '\n');
+    console.log(`${found.filter(Boolean).length} of ${todo.length} logos added to ${file}`);
+  } else if (cmd === 'links') {
+    const res = await checkLinks(d);
+    res.forEach(([u, state, note]) => console.log(`${state.padEnd(11)} ${u}${note ? '  (' + note + ')' : ''}`));
+    const gone = res.filter(r => r[1] === 'gone').length;
+    console.log(`${res.length} links, ${gone} gone, ${res.filter(r => r[1] === 'moved').length} moved`);
+    if (gone) process.exit(1);
+  } else {
+    const { errors, warnings } = check(d, resumeFile ? fs.readFileSync(resumeFile, 'utf8') : null);
+    warnings.forEach(w => console.log('warning: ' + w));
+    errors.forEach(e => console.log('error:   ' + e));
+    console.log(`${file}: ${(d.nodes || []).length} entries, ${(d.skills || []).length} skills, ${errors.length} errors, ${warnings.length} warnings`);
+    if (errors.length) process.exit(1);
+    if (isBuild) {
+      fs.writeFileSync(a, build(d, path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'view')));
+      console.log(`wrote ${a}`);
+    }
   }
 }

@@ -1,0 +1,25 @@
+LENA HOFFMANN
+Leipzig, Germany | lena@example.com | +49 170 0000000 | linkedin.com/in/example
+Born 3 May 2003 in Dresden
+
+PROFILE
+Final-year economics student looking for a first analyst role.
+
+EDUCATION
+University of Leipzig, BSc Economics, 2023 to 2026
+Focus on statistics and public finance. Two semesters of econometrics. Seminar papers each semester.
+Bachelor thesis (2026): estimated how a local transit subsidy changed ridership, using public timetable and ticket data. Difference-in-differences in R. 40 pages.
+
+EXPERIENCE
+Stadtwerke Leipzig, Intern, controlling, Feb 2025 to Jul 2025, Leipzig
+- Rebuilt the monthly cost report as a spreadsheet model in Excel that the team still uses.
+- Ran variance analysis on monthly costs.
+
+SKILLS
+Statistics, Excel, R, writing, PowerPoint
+
+LANGUAGES
+German (native), English (C1)
+
+INTERESTS
+Bouldering
