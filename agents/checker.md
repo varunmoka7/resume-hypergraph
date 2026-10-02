@@ -13,3 +13,5 @@ You are given ROOT (a folder path) and the paths of `profile.json` and `resume.t
    - WRONG ORGANISATION: descriptions that do not match their source, or sources that do not open.
    - PRIVATE OR MISSING: private details that slipped in, and resume entries that appear nowhere in the profile.
 3. If a list is empty, say "none found". Do not edit any file.
+
+A `logo` value is an embedded picture on one very long line. Skip it; it is not text to check.
