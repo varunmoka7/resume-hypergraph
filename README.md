@@ -5,7 +5,7 @@ centre, the things they have done sit around them in groups, and skills sit at t
 A skill is a hyperedge: it connects every place it was used, and each connection carries
 one sentence saying what was done there with it.
 
-The result is one HTML file. Plain HTML, CSS and JavaScript, no build step, no libraries.
+The result is one HTML file. Plain HTML, CSS and JavaScript, no build step, no libraries. The fonts are inside the file, so the page loads nothing from another site.
 
 ![The graph of a made-up product manager with the skill "User research" open: a band joins the three places it was used, and the panel gives one sentence for each](docs/graph.png)
 
@@ -35,8 +35,9 @@ has a separate agent check them against the resume, builds the page and opens it
 | `/resume-graph:check` | Check every sentence against the resume |
 | `/resume-graph:publish` | Build the page |
 
-**2. With Claude on the web.** Run `sh scripts/pack-skill.sh`, upload `dist/resume-graph.zip`
-under Settings, Capabilities, Skills, then share a resume in a chat and ask for a graph.
+**2. With Claude on the web.** Download
+[resume-graph.zip](https://github.com/varunmoka7/resume-hypergraph/releases/latest/download/resume-graph.zip),
+upload it under Settings, Capabilities, Skills, then share a resume in a chat and ask for a graph.
 Not yet tested there.
 
 **3. With Codex, Gemini CLI, Cursor or another agent.** The skill is plain instructions plus one
@@ -76,7 +77,7 @@ examples in `view/data/`) and build:
 
 | Path | What |
 |---|---|
-| `view/` | The page: `index.html`, `graph.js`, `style.css`, sample data |
+| `view/` | The page: `index.html`, `graph.js`, `style.css`, the fonts (IBM Plex, SIL Open Font License), sample data |
 | `skills/` | The Claude skill and its steps |
 | `agents/` | The two agents the skill starts: one profiles an entry, one checks the result |
 | `AGENTS.md` | Instructions for Codex, Gemini CLI and other agents |

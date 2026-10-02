@@ -84,7 +84,8 @@ export function build(d, viewDir) {
   let html = read('index.html');
   html = swap(html, '<title>Profile</title>', `<title>${esc(d.name)}</title>`);
   html = swap(html, '<meta name="description" content="">', `<meta name="description" content="${esc([d.name, d.roleLine].filter(Boolean).join(': '))}">\n<meta property="og:type" content="profile">\n<meta property="og:title" content="${esc(d.name)}">\n<meta property="og:description" content="${esc(d.roleLine || '')}">`); // what a shared link shows
-  html = swap(html, '<link rel="stylesheet" href="style.css">', `<style>${read('style.css')}</style>`);
+  const css = read('style.css').replace(/url\(fonts\/([\w.-]+)\)/g, (_, f) => `url(data:font/woff2;base64,${fs.readFileSync(path.join(viewDir, 'fonts', f)).toString('base64')})`); // the fonts ride inside the file
+  html = swap(html, '<link rel="stylesheet" href="style.css">', `<style>${css}</style>`);
   return swap(html, '<script src="graph.js" defer></script>', `<script>window.PROFILE=${data}</script>\n<script>document.addEventListener('DOMContentLoaded',()=>{${read('graph.js')}})</script>`);
 }
 
