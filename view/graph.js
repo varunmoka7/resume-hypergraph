@@ -446,11 +446,10 @@
 
   // ---------- start ----------
   async function start() {
-    // The data: baked into a downloaded page (window.PROFILE), handed over by the upload page (?p=session),
-    // or a file: ?p=name picks data/name.json, the default is data/profile.json.
+    // The data: baked into a built page (window.PROFILE), or a file: ?p=name picks data/name.json, the default is data/profile.json.
     const file = (new URLSearchParams(location.search).get('p') || 'profile').replace(/[^\w-]/g, '');
     try {
-      net = clean(window.PROFILE || (file === 'session' ? JSON.parse(sessionStorage.getItem('resume-hypergraph')) : await fetch(`data/${file}.json`).then(r => { if (!r.ok) throw r; return r.json(); })));
+      net = clean(window.PROFILE || await fetch(`data/${file}.json`).then(r => { if (!r.ok) throw r; return r.json(); }));
     } catch { return; }
     fillPage();
     wireLanding();
