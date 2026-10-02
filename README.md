@@ -9,10 +9,10 @@ The result is one HTML file. Plain HTML, CSS and JavaScript, no build step, no l
 
 ## Ways to use it
 
-**1. With Claude Code (the full version).** Clone this repo, then inside Claude Code:
+**1. With Claude Code (the full version).** Inside Claude Code:
 
-    /plugin marketplace add /path/to/resume-hypergraph
-    /plugin install resume-graph
+    /plugin marketplace add varunmoka7/resume-hypergraph
+    /plugin install resume-graph@resume-hypergraph
 
 Then give it a resume: `/resume-graph:resume-graph my-cv.pdf`, or just say "turn my resume
 into a graph". It runs in one go without questions: it reads the resume, starts one agent per
@@ -37,9 +37,9 @@ Node script, so any agent that reads files and runs commands can follow it.
 
 | Agent | How |
 |---|---|
-| Any of them | Open this repo in the agent and say "turn my resume at ~/cv.pdf into a graph". `AGENTS.md` tells it what to do. |
+| Any of them | Clone this repo, open it in the agent and say "turn my resume at ~/cv.pdf into a graph". `AGENTS.md` tells it what to do. |
 | Codex | `sh scripts/pack-skill.sh`, then `cp -R dist/resume-graph ~/.codex/skills/`. The skill is then available in every project. |
-| Gemini CLI | `gemini extensions install /path/to/resume-hypergraph` |
+| Gemini CLI | `gemini extensions install https://github.com/varunmoka7/resume-hypergraph` |
 | Others with a skills folder | Copy `dist/resume-graph` into it (`~/.agents/skills/` is common). |
 
 Agents without subagents do the company research one entry at a time; the result is the same.
