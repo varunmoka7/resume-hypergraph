@@ -26,7 +26,15 @@ One JSON file per person (`data/profile.json` is the default):
 | `nodes` | What the person has done. Each has `id`, `group`, `label`, `kind` (one line under the label), `text`, and `skills` (ids). Optional: `months` (sets the size), `role`, `period`, `location`, `grade`, `org {description, about, hq, url}`, `sections [{title, items}]`, `technology`, `logo`, `parent`. |
 | `skills` | Each has `id`, `label`, `intro`, and `uses`: one sentence per node id saying what was done there. |
 
-Groups today: `work`, `education`, `projects`, `venture`, `parttime`, `personal`.
+Standard groups: `work`, `education`, `projects`, `venture`, `freelance`, `publications`, `teaching`,
+`talks`, `exhibitions`, `credentials`, `awards`, `service`, `volunteering`, `personal`. A resume heading
+that fits none of them keeps its own name: give the node any other group id and add
+`groups: [{id, label}]` to the file. The same list renames a standard group ("Berufserfahrung").
+Why these fourteen: `research/2026-10-02-resume-sections.md`.
+
+A group with more rows than fit shows its first rows and a "+ N more" row that opens the full list.
+
+`languages: [{label, level}]` is optional and shows on the landing.
 
 ## Check the layout
 

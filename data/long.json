@@ -1,10 +1,30 @@
 {
  "name": "Dr. Maria Fernandez-Castillo",
  "roleLine": "Epidemiologist and health-data lead with twenty-five years across regulators, hospitals and industry.",
+ "languages": [
+  {
+   "label": "Spanish",
+   "level": "native"
+  },
+  {
+   "label": "English",
+   "level": "C2"
+  },
+  {
+   "label": "German",
+   "level": "B2"
+  }
+ ],
  "links": [
   {
    "label": "Email",
    "url": "mailto:maria@example.com"
+  }
+ ],
+ "groups": [
+  {
+   "id": "field-deployments",
+   "label": "Field deployments"
   }
  ],
  "nodes": [
@@ -12,7 +32,7 @@
    "id": "work-0",
    "group": "work",
    "label": "World Health Organization Regional Office for Europe",
-   "kind": "Role 1 · 96 months",
+   "kind": "Role · 96 months",
    "text": "Made-up entry for layout testing: World Health Organization Regional Office for Europe.",
    "skills": [
     "regulatory-affairs",
@@ -26,7 +46,7 @@
    "id": "work-1",
    "group": "work",
    "label": "Bundesinstitut für Arzneimittel und Medizinprodukte",
-   "kind": "Role 2 · 40 months",
+   "kind": "Role · 40 months",
    "text": "Made-up entry for layout testing: Bundesinstitut für Arzneimittel und Medizinprodukte.",
    "skills": [
     "survey-design",
@@ -38,7 +58,7 @@
    "id": "work-2",
    "group": "work",
    "label": "Novacura Pharma",
-   "kind": "Role 3 · 52 months",
+   "kind": "Role · 52 months",
    "text": "Made-up entry for layout testing: Novacura Pharma.",
    "skills": [
     "scientific-writing",
@@ -52,7 +72,7 @@
    "id": "work-3",
    "group": "work",
    "label": "Charité Universitätsmedizin",
-   "kind": "Role 4 · 30 months",
+   "kind": "Role · 30 months",
    "text": "Made-up entry for layout testing: Charité Universitätsmedizin.",
    "skills": [
     "grant-writing",
@@ -64,7 +84,7 @@
    "id": "work-4",
    "group": "work",
    "label": "Medisight Analytics",
-   "kind": "Role 5 · 22 months",
+   "kind": "Role · 22 months",
    "text": "Made-up entry for layout testing: Medisight Analytics.",
    "skills": [
     "grant-writing",
@@ -79,7 +99,7 @@
    "id": "work-5",
    "group": "work",
    "label": "Hospital Clínic de Barcelona",
-   "kind": "Role 6 · 48 months",
+   "kind": "Role · 48 months",
    "text": "Made-up entry for layout testing: Hospital Clínic de Barcelona.",
    "skills": [
     "team-leadership",
@@ -95,7 +115,7 @@
    "id": "work-6",
    "group": "work",
    "label": "Instituto de Salud Global",
-   "kind": "Role 7 · 18 months",
+   "kind": "Role · 18 months",
    "text": "Made-up entry for layout testing: Instituto de Salud Global.",
    "skills": [
     "scientific-writing",
@@ -111,7 +131,7 @@
    "id": "work-7",
    "group": "work",
    "label": "Pfennig & Sohn Consulting",
-   "kind": "Role 8 · 14 months",
+   "kind": "Role · 14 months",
    "text": "Made-up entry for layout testing: Pfennig & Sohn Consulting.",
    "skills": [
     "epidemiology",
@@ -124,7 +144,7 @@
    "id": "work-8",
    "group": "work",
    "label": "Healthbridge",
-   "kind": "Role 9 · 9 months",
+   "kind": "Role · 9 months",
    "text": "Made-up entry for layout testing: Healthbridge.",
    "skills": [
     "team-leadership",
@@ -140,7 +160,7 @@
    "id": "work-9",
    "group": "work",
    "label": "Lumen Diagnostics",
-   "kind": "Role 10 · 26 months",
+   "kind": "Role · 26 months",
    "text": "Made-up entry for layout testing: Lumen Diagnostics.",
    "skills": [
     "scientific-writing",
@@ -156,7 +176,7 @@
    "id": "work-10",
    "group": "work",
    "label": "Clinica Vida",
-   "kind": "Role 11 · 12 months",
+   "kind": "Role · 12 months",
    "text": "Made-up entry for layout testing: Clinica Vida.",
    "skills": [
     "scientific-writing",
@@ -168,7 +188,7 @@
    "id": "work-11",
    "group": "work",
    "label": "Statens Serum Institut",
-   "kind": "Role 12 · 20 months",
+   "kind": "Role · 20 months",
    "text": "Made-up entry for layout testing: Statens Serum Institut.",
    "skills": [
     "python",
@@ -190,8 +210,7 @@
     "scientific-writing",
     "stakeholder-management",
     "peer-review",
-    "epidemiology",
-    "r"
+    "epidemiology"
    ]
   },
   {
@@ -201,9 +220,8 @@
    "kind": "Degree",
    "text": "Made-up entry for layout testing: London School of Hygiene and Tropical Medicine.",
    "skills": [
-    "spanish",
-    "r",
-    "grant-writing"
+    "health-economics",
+    "spanish"
    ]
   },
   {
@@ -213,12 +231,8 @@
    "kind": "Degree",
    "text": "Made-up entry for layout testing: Karolinska Institutet.",
    "skills": [
-    "epidemiology",
-    "budgeting",
-    "public-speaking",
-    "teaching",
-    "stakeholder-management",
-    "portuguese"
+    "grant-writing",
+    "scientific-writing"
    ]
   },
   {
@@ -228,11 +242,8 @@
    "kind": "Degree",
    "text": "Made-up entry for layout testing: Harvard Extension School.",
    "skills": [
-    "grant-writing",
-    "team-leadership",
     "budgeting",
-    "data-governance",
-    "health-economics",
+    "public-speaking",
     "teaching"
    ]
   },
@@ -243,9 +254,10 @@
    "kind": "Project",
    "text": "Made-up entry for layout testing: Open trial registry.",
    "skills": [
-    "public-speaking",
-    "data-governance",
-    "biostatistics"
+    "epidemiology",
+    "health-policy",
+    "grant-writing",
+    "team-leadership"
    ]
   },
   {
@@ -255,8 +267,10 @@
    "kind": "Project",
    "text": "Made-up entry for layout testing: Vaccine uptake dashboard.",
    "skills": [
-    "survey-design",
-    "scientific-writing"
+    "health-economics",
+    "teaching",
+    "regulatory-affairs",
+    "public-speaking"
    ]
   },
   {
@@ -266,96 +280,854 @@
    "kind": "Project",
    "text": "Made-up entry for layout testing: Rural clinic survey.",
    "skills": [
-    "teaching",
-    "spanish",
-    "peer-review",
-    "health-policy"
-   ]
-  },
-  {
-   "id": "projects-3",
-   "group": "projects",
-   "label": "Health data standards working group",
-   "kind": "Project",
-   "text": "Made-up entry for layout testing: Health data standards working group.",
-   "skills": [
-    "scientific-writing",
-    "stakeholder-management",
-    "grant-writing",
-    "machine-learning",
-    "public-speaking"
-   ]
-  },
-  {
-   "id": "projects-4",
-   "group": "projects",
-   "label": "Textbook chapter",
-   "kind": "Project",
-   "text": "Made-up entry for layout testing: Textbook chapter.",
-   "skills": [
     "biostatistics",
-    "portuguese"
-   ]
-  },
-  {
-   "id": "projects-5",
-   "group": "projects",
-   "label": "Podcast",
-   "kind": "Project",
-   "text": "Made-up entry for layout testing: Podcast.",
-   "skills": [
-    "mentoring",
-    "scientific-writing",
     "trial-design",
-    "stakeholder-management"
+    "grant-writing",
+    "survey-design"
    ]
   },
   {
    "id": "venture-0",
    "group": "venture",
    "label": "Fernandez Health Advisory",
-   "kind": "Founder · since 2021",
+   "kind": "Founder · since 2021 · 50 months",
    "text": "Made-up entry for layout testing: Fernandez Health Advisory.",
    "skills": [
+    "teaching",
     "spanish",
-    "project-management",
-    "trial-design",
     "peer-review"
    ],
    "months": 50
   },
   {
-   "id": "parttime-0",
-   "group": "parttime",
-   "label": "Guest lecturer",
-   "kind": "Part-time",
-   "text": "Made-up entry for layout testing: Guest lecturer.",
+   "id": "publications-0",
+   "group": "publications",
+   "label": "Paper 1: vaccine uptake in region 1",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 1: vaccine uptake in region 1.",
    "skills": [
+    "scientific-writing",
+    "stakeholder-management",
+    "grant-writing",
+    "machine-learning"
+   ]
+  },
+  {
+   "id": "publications-1",
+   "group": "publications",
+   "label": "Paper 2: vaccine uptake in region 2",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 2: vaccine uptake in region 2.",
+   "skills": [
+    "spanish",
+    "trial-design",
+    "grant-writing",
+    "biostatistics"
+   ]
+  },
+  {
+   "id": "publications-2",
+   "group": "publications",
+   "label": "Paper 3: vaccine uptake in region 3",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 3: vaccine uptake in region 3.",
+   "skills": [
+    "mentoring",
+    "scientific-writing",
+    "trial-design"
+   ]
+  },
+  {
+   "id": "publications-3",
+   "group": "publications",
+   "label": "Paper 4: vaccine uptake in region 4",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 4: vaccine uptake in region 4.",
+   "skills": [
+    "epidemiology",
+    "spanish",
+    "project-management",
+    "trial-design"
+   ]
+  },
+  {
+   "id": "publications-4",
+   "group": "publications",
+   "label": "Paper 5: vaccine uptake in region 5",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 5: vaccine uptake in region 5.",
+   "skills": [
+    "clinical-research",
     "stakeholder-management",
     "peer-review"
    ]
   },
   {
-   "id": "parttime-1",
-   "group": "parttime",
-   "label": "Journal editor",
-   "kind": "Part-time",
-   "text": "Made-up entry for layout testing: Journal editor.",
+   "id": "publications-5",
+   "group": "publications",
+   "label": "Paper 6: vaccine uptake in region 6",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 6: vaccine uptake in region 6.",
    "skills": [
     "health-policy",
-    "team-leadership",
+    "team-leadership"
+   ]
+  },
+  {
+   "id": "publications-6",
+   "group": "publications",
+   "label": "Paper 7: vaccine uptake in region 7",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 7: vaccine uptake in region 7.",
+   "skills": [
+    "biostatistics",
+    "python",
+    "epidemiology",
+    "regulatory-affairs"
+   ]
+  },
+  {
+   "id": "publications-7",
+   "group": "publications",
+   "label": "Paper 8: vaccine uptake in region 8",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 8: vaccine uptake in region 8.",
+   "skills": [
+    "project-management",
     "public-speaking"
    ]
   },
   {
-   "id": "parttime-2",
-   "group": "parttime",
-   "label": "Board member",
-   "kind": "Part-time",
-   "text": "Made-up entry for layout testing: Board member.",
+   "id": "publications-8",
+   "group": "publications",
+   "label": "Paper 9: vaccine uptake in region 9",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 9: vaccine uptake in region 9.",
+   "skills": [
+    "health-economics"
+   ]
+  },
+  {
+   "id": "publications-9",
+   "group": "publications",
+   "label": "Paper 10: vaccine uptake in region 10",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 10: vaccine uptake in region 10.",
+   "skills": [
+    "project-management",
+    "survey-design",
+    "machine-learning",
+    "regulatory-affairs"
+   ]
+  },
+  {
+   "id": "publications-10",
+   "group": "publications",
+   "label": "Paper 11: vaccine uptake in region 11",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 11: vaccine uptake in region 11.",
+   "skills": [
+    "survey-design",
+    "machine-learning",
+    "spanish",
+    "data-governance"
+   ]
+  },
+  {
+   "id": "publications-11",
+   "group": "publications",
+   "label": "Paper 12: vaccine uptake in region 12",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 12: vaccine uptake in region 12.",
+   "skills": [
+    "trial-design",
+    "project-management",
+    "r"
+   ]
+  },
+  {
+   "id": "publications-12",
+   "group": "publications",
+   "label": "Paper 13: vaccine uptake in region 13",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 13: vaccine uptake in region 13.",
+   "skills": [
+    "grant-writing",
+    "health-economics"
+   ]
+  },
+  {
+   "id": "publications-13",
+   "group": "publications",
+   "label": "Paper 14: vaccine uptake in region 14",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 14: vaccine uptake in region 14.",
+   "skills": [
+    "r",
+    "trial-design"
+   ]
+  },
+  {
+   "id": "publications-14",
+   "group": "publications",
+   "label": "Paper 15: vaccine uptake in region 15",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 15: vaccine uptake in region 15.",
+   "skills": [
+    "clinical-research",
+    "public-speaking"
+   ]
+  },
+  {
+   "id": "publications-15",
+   "group": "publications",
+   "label": "Paper 16: vaccine uptake in region 16",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 16: vaccine uptake in region 16.",
+   "skills": [
+    "machine-learning",
+    "epidemiology"
+   ]
+  },
+  {
+   "id": "publications-16",
+   "group": "publications",
+   "label": "Paper 17: vaccine uptake in region 17",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 17: vaccine uptake in region 17.",
+   "skills": [
+    "regulatory-affairs"
+   ]
+  },
+  {
+   "id": "publications-17",
+   "group": "publications",
+   "label": "Paper 18: vaccine uptake in region 18",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 18: vaccine uptake in region 18.",
+   "skills": [
+    "survey-design",
+    "peer-review",
+    "health-policy",
+    "scientific-writing"
+   ]
+  },
+  {
+   "id": "publications-18",
+   "group": "publications",
+   "label": "Paper 19: vaccine uptake in region 19",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 19: vaccine uptake in region 19.",
+   "skills": [
+    "regulatory-affairs",
+    "spanish",
+    "budgeting"
+   ]
+  },
+  {
+   "id": "publications-19",
+   "group": "publications",
+   "label": "Paper 20: vaccine uptake in region 20",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 20: vaccine uptake in region 20.",
+   "skills": [
+    "stakeholder-management"
+   ]
+  },
+  {
+   "id": "publications-20",
+   "group": "publications",
+   "label": "Paper 21: vaccine uptake in region 21",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 21: vaccine uptake in region 21.",
+   "skills": [
+    "project-management",
+    "team-leadership",
+    "public-speaking",
+    "mentoring"
+   ]
+  },
+  {
+   "id": "publications-21",
+   "group": "publications",
+   "label": "Paper 22: vaccine uptake in region 22",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 22: vaccine uptake in region 22.",
+   "skills": [
+    "biostatistics",
+    "python",
+    "grant-writing",
+    "stakeholder-management"
+   ]
+  },
+  {
+   "id": "publications-22",
+   "group": "publications",
+   "label": "Paper 23: vaccine uptake in region 23",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 23: vaccine uptake in region 23.",
+   "skills": [
+    "team-leadership",
+    "teaching"
+   ]
+  },
+  {
+   "id": "publications-23",
+   "group": "publications",
+   "label": "Paper 24: vaccine uptake in region 24",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 24: vaccine uptake in region 24.",
+   "skills": [
+    "team-leadership"
+   ]
+  },
+  {
+   "id": "publications-24",
+   "group": "publications",
+   "label": "Paper 25: vaccine uptake in region 25",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 25: vaccine uptake in region 25.",
+   "skills": [
+    "scientific-writing"
+   ]
+  },
+  {
+   "id": "publications-25",
+   "group": "publications",
+   "label": "Paper 26: vaccine uptake in region 26",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 26: vaccine uptake in region 26.",
+   "skills": [
+    "survey-design",
+    "team-leadership"
+   ]
+  },
+  {
+   "id": "publications-26",
+   "group": "publications",
+   "label": "Paper 27: vaccine uptake in region 27",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 27: vaccine uptake in region 27.",
+   "skills": [
+    "health-policy",
+    "clinical-research",
+    "grant-writing"
+   ]
+  },
+  {
+   "id": "publications-27",
+   "group": "publications",
+   "label": "Paper 28: vaccine uptake in region 28",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 28: vaccine uptake in region 28.",
+   "skills": [
+    "health-policy",
+    "project-management"
+   ]
+  },
+  {
+   "id": "publications-28",
+   "group": "publications",
+   "label": "Paper 29: vaccine uptake in region 29",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 29: vaccine uptake in region 29.",
+   "skills": [
+    "mentoring",
+    "machine-learning"
+   ]
+  },
+  {
+   "id": "publications-29",
+   "group": "publications",
+   "label": "Paper 30: vaccine uptake in region 30",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 30: vaccine uptake in region 30.",
+   "skills": [
+    "health-policy",
+    "peer-review",
+    "public-speaking"
+   ]
+  },
+  {
+   "id": "publications-30",
+   "group": "publications",
+   "label": "Paper 31: vaccine uptake in region 31",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 31: vaccine uptake in region 31.",
+   "skills": [
+    "team-leadership"
+   ]
+  },
+  {
+   "id": "publications-31",
+   "group": "publications",
+   "label": "Paper 32: vaccine uptake in region 32",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 32: vaccine uptake in region 32.",
+   "skills": [
+    "stakeholder-management",
+    "public-speaking",
+    "epidemiology",
+    "grant-writing"
+   ]
+  },
+  {
+   "id": "publications-32",
+   "group": "publications",
+   "label": "Paper 33: vaccine uptake in region 33",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 33: vaccine uptake in region 33.",
+   "skills": [
+    "team-leadership",
+    "portuguese"
+   ]
+  },
+  {
+   "id": "publications-33",
+   "group": "publications",
+   "label": "Paper 34: vaccine uptake in region 34",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 34: vaccine uptake in region 34.",
+   "skills": [
+    "portuguese",
+    "machine-learning",
+    "public-speaking"
+   ]
+  },
+  {
+   "id": "publications-34",
+   "group": "publications",
+   "label": "Paper 35: vaccine uptake in region 35",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 35: vaccine uptake in region 35.",
+   "skills": [
+    "budgeting",
+    "clinical-research"
+   ]
+  },
+  {
+   "id": "publications-35",
+   "group": "publications",
+   "label": "Paper 36: vaccine uptake in region 36",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 36: vaccine uptake in region 36.",
+   "skills": [
+    "budgeting",
+    "peer-review"
+   ]
+  },
+  {
+   "id": "publications-36",
+   "group": "publications",
+   "label": "Paper 37: vaccine uptake in region 37",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 37: vaccine uptake in region 37.",
+   "skills": [
+    "spanish",
+    "survey-design"
+   ]
+  },
+  {
+   "id": "publications-37",
+   "group": "publications",
+   "label": "Paper 38: vaccine uptake in region 38",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 38: vaccine uptake in region 38.",
+   "skills": [
+    "budgeting"
+   ]
+  },
+  {
+   "id": "publications-38",
+   "group": "publications",
+   "label": "Paper 39: vaccine uptake in region 39",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 39: vaccine uptake in region 39.",
+   "skills": [
+    "mentoring",
+    "grant-writing",
+    "spanish"
+   ]
+  },
+  {
+   "id": "publications-39",
+   "group": "publications",
+   "label": "Paper 40: vaccine uptake in region 40",
+   "kind": "Journal article",
+   "text": "Made-up entry for layout testing: Paper 40: vaccine uptake in region 40.",
+   "skills": [
+    "budgeting",
+    "peer-review",
+    "health-economics"
+   ]
+  },
+  {
+   "id": "teaching-0",
+   "group": "teaching",
+   "label": "Epidemiology 101",
+   "kind": "Course",
+   "text": "Made-up entry for layout testing: Epidemiology 101.",
+   "skills": [
+    "r",
+    "survey-design",
+    "budgeting"
+   ]
+  },
+  {
+   "id": "teaching-1",
+   "group": "teaching",
+   "label": "Biostatistics for clinicians",
+   "kind": "Course",
+   "text": "Made-up entry for layout testing: Biostatistics for clinicians.",
+   "skills": [
+    "mentoring",
+    "r",
+    "health-policy"
+   ]
+  },
+  {
+   "id": "teaching-2",
+   "group": "teaching",
+   "label": "Trial design seminar",
+   "kind": "Course",
+   "text": "Made-up entry for layout testing: Trial design seminar.",
+   "skills": [
+    "r",
+    "project-management"
+   ]
+  },
+  {
+   "id": "teaching-3",
+   "group": "teaching",
+   "label": "Summer school",
+   "kind": "Course",
+   "text": "Made-up entry for layout testing: Summer school.",
    "skills": [
     "python",
-    "epidemiology"
+    "budgeting"
+   ]
+  },
+  {
+   "id": "teaching-4",
+   "group": "teaching",
+   "label": "PhD supervision",
+   "kind": "Course",
+   "text": "Made-up entry for layout testing: PhD supervision.",
+   "skills": [
+    "peer-review",
+    "portuguese",
+    "clinical-research",
+    "machine-learning"
+   ]
+  },
+  {
+   "id": "talks-0",
+   "group": "talks",
+   "label": "Conference talk 1",
+   "kind": "Invited talk",
+   "text": "Made-up entry for layout testing: Conference talk 1.",
+   "skills": [
+    "machine-learning",
+    "python",
+    "spanish",
+    "health-policy"
+   ]
+  },
+  {
+   "id": "talks-1",
+   "group": "talks",
+   "label": "Conference talk 2",
+   "kind": "Invited talk",
+   "text": "Made-up entry for layout testing: Conference talk 2.",
+   "skills": [
+    "stakeholder-management",
+    "portuguese",
+    "peer-review"
+   ]
+  },
+  {
+   "id": "talks-2",
+   "group": "talks",
+   "label": "Conference talk 3",
+   "kind": "Invited talk",
+   "text": "Made-up entry for layout testing: Conference talk 3.",
+   "skills": [
+    "grant-writing",
+    "r",
+    "team-leadership"
+   ]
+  },
+  {
+   "id": "talks-3",
+   "group": "talks",
+   "label": "Conference talk 4",
+   "kind": "Invited talk",
+   "text": "Made-up entry for layout testing: Conference talk 4.",
+   "skills": [
+    "public-speaking",
+    "python"
+   ]
+  },
+  {
+   "id": "talks-4",
+   "group": "talks",
+   "label": "Conference talk 5",
+   "kind": "Invited talk",
+   "text": "Made-up entry for layout testing: Conference talk 5.",
+   "skills": [
+    "python",
+    "public-speaking",
+    "health-policy"
+   ]
+  },
+  {
+   "id": "talks-5",
+   "group": "talks",
+   "label": "Conference talk 6",
+   "kind": "Invited talk",
+   "text": "Made-up entry for layout testing: Conference talk 6.",
+   "skills": [
+    "public-speaking"
+   ]
+  },
+  {
+   "id": "talks-6",
+   "group": "talks",
+   "label": "Conference talk 7",
+   "kind": "Invited talk",
+   "text": "Made-up entry for layout testing: Conference talk 7.",
+   "skills": [
+    "mentoring",
+    "grant-writing",
+    "trial-design"
+   ]
+  },
+  {
+   "id": "talks-7",
+   "group": "talks",
+   "label": "Conference talk 8",
+   "kind": "Invited talk",
+   "text": "Made-up entry for layout testing: Conference talk 8.",
+   "skills": [
+    "project-management"
+   ]
+  },
+  {
+   "id": "talks-8",
+   "group": "talks",
+   "label": "Conference talk 9",
+   "kind": "Invited talk",
+   "text": "Made-up entry for layout testing: Conference talk 9.",
+   "skills": [
+    "public-speaking",
+    "health-economics"
+   ]
+  },
+  {
+   "id": "talks-9",
+   "group": "talks",
+   "label": "Conference talk 10",
+   "kind": "Invited talk",
+   "text": "Made-up entry for layout testing: Conference talk 10.",
+   "skills": [
+    "mentoring",
+    "teaching",
+    "grant-writing",
+    "portuguese"
+   ]
+  },
+  {
+   "id": "talks-10",
+   "group": "talks",
+   "label": "Conference talk 11",
+   "kind": "Invited talk",
+   "text": "Made-up entry for layout testing: Conference talk 11.",
+   "skills": [
+    "stakeholder-management",
+    "project-management",
+    "portuguese",
+    "grant-writing"
+   ]
+  },
+  {
+   "id": "talks-11",
+   "group": "talks",
+   "label": "Conference talk 12",
+   "kind": "Invited talk",
+   "text": "Made-up entry for layout testing: Conference talk 12.",
+   "skills": [
+    "health-economics",
+    "regulatory-affairs"
+   ]
+  },
+  {
+   "id": "talks-12",
+   "group": "talks",
+   "label": "Conference talk 13",
+   "kind": "Invited talk",
+   "text": "Made-up entry for layout testing: Conference talk 13.",
+   "skills": [
+    "regulatory-affairs"
+   ]
+  },
+  {
+   "id": "talks-13",
+   "group": "talks",
+   "label": "Conference talk 14",
+   "kind": "Invited talk",
+   "text": "Made-up entry for layout testing: Conference talk 14.",
+   "skills": [
+    "mentoring",
+    "regulatory-affairs",
+    "health-policy",
+    "public-speaking"
+   ]
+  },
+  {
+   "id": "credentials-0",
+   "group": "credentials",
+   "label": "Medical licence (Spain)",
+   "kind": "Credential",
+   "text": "Made-up entry for layout testing: Medical licence (Spain).",
+   "skills": [
+    "regulatory-affairs",
+    "survey-design",
+    "clinical-research"
+   ]
+  },
+  {
+   "id": "credentials-1",
+   "group": "credentials",
+   "label": "Good Clinical Practice",
+   "kind": "Credential",
+   "text": "Made-up entry for layout testing: Good Clinical Practice.",
+   "skills": [
+    "portuguese"
+   ]
+  },
+  {
+   "id": "credentials-2",
+   "group": "credentials",
+   "label": "Project Management Professional",
+   "kind": "Credential",
+   "text": "Made-up entry for layout testing: Project Management Professional.",
+   "skills": [
+    "budgeting"
+   ]
+  },
+  {
+   "id": "awards-0",
+   "group": "awards",
+   "label": "Young Investigator Award",
+   "kind": "Award",
+   "text": "Made-up entry for layout testing: Young Investigator Award.",
+   "skills": [
+    "data-governance",
+    "python"
+   ]
+  },
+  {
+   "id": "awards-1",
+   "group": "awards",
+   "label": "ERC Starting Grant",
+   "kind": "Award",
+   "text": "Made-up entry for layout testing: ERC Starting Grant.",
+   "skills": [
+    "clinical-research",
+    "machine-learning"
+   ]
+  },
+  {
+   "id": "awards-2",
+   "group": "awards",
+   "label": "Best paper 2019",
+   "kind": "Award",
+   "text": "Made-up entry for layout testing: Best paper 2019.",
+   "skills": [
+    "epidemiology",
+    "budgeting"
+   ]
+  },
+  {
+   "id": "awards-3",
+   "group": "awards",
+   "label": "Marie Curie Fellowship",
+   "kind": "Award",
+   "text": "Made-up entry for layout testing: Marie Curie Fellowship.",
+   "skills": [
+    "scientific-writing",
+    "teaching"
+   ]
+  },
+  {
+   "id": "service-0",
+   "group": "service",
+   "label": "Journal editor",
+   "kind": "Service",
+   "text": "Made-up entry for layout testing: Journal editor.",
+   "skills": [
+    "survey-design",
+    "data-governance",
+    "regulatory-affairs"
+   ]
+  },
+  {
+   "id": "service-1",
+   "group": "service",
+   "label": "Board member, Health Data Society",
+   "kind": "Service",
+   "text": "Made-up entry for layout testing: Board member, Health Data Society.",
+   "skills": [
+    "portuguese"
+   ]
+  },
+  {
+   "id": "service-2",
+   "group": "service",
+   "label": "Ethics committee",
+   "kind": "Service",
+   "text": "Made-up entry for layout testing: Ethics committee.",
+   "skills": [
+    "stakeholder-management",
+    "trial-design",
+    "scientific-writing"
+   ]
+  },
+  {
+   "id": "field-deployments-0",
+   "group": "field-deployments",
+   "label": "Ebola response, Sierra Leone",
+   "kind": "Deployment",
+   "text": "Made-up entry for layout testing: Ebola response, Sierra Leone.",
+   "skills": [
+    "budgeting",
+    "regulatory-affairs",
+    "survey-design",
+    "clinical-research"
+   ]
+  },
+  {
+   "id": "field-deployments-1",
+   "group": "field-deployments",
+   "label": "Cholera response, Yemen",
+   "kind": "Deployment",
+   "text": "Made-up entry for layout testing: Cholera response, Yemen.",
+   "skills": [
+    "health-economics",
+    "health-policy",
+    "clinical-research",
+    "regulatory-affairs"
+   ]
+  },
+  {
+   "id": "field-deployments-2",
+   "group": "field-deployments",
+   "label": "COVID-19 task force",
+   "kind": "Deployment",
+   "text": "Made-up entry for layout testing: COVID-19 task force.",
+   "skills": [
+    "regulatory-affairs",
+    "public-speaking"
    ]
   },
   {
@@ -388,7 +1160,17 @@
    "id": "clinical-research",
    "label": "Clinical research",
    "intro": "Clinical research.",
-   "uses": {}
+   "uses": {
+    "publications-4": "Used at Paper 5: vaccine uptake in region 5.",
+    "publications-14": "Used at Paper 15: vaccine uptake in region 15.",
+    "publications-26": "Used at Paper 27: vaccine uptake in region 27.",
+    "publications-34": "Used at Paper 35: vaccine uptake in region 35.",
+    "teaching-4": "Used at PhD supervision.",
+    "credentials-0": "Used at Medical licence (Spain).",
+    "awards-1": "Used at ERC Starting Grant.",
+    "field-deployments-0": "Used at Ebola response, Sierra Leone.",
+    "field-deployments-1": "Used at Cholera response, Yemen."
+   }
   },
   {
    "id": "biostatistics",
@@ -401,8 +1183,10 @@
     "work-5": "Used at Hospital Clínic de Barcelona.",
     "work-6": "Used at Instituto de Salud Global.",
     "work-10": "Used at Clinica Vida.",
-    "projects-0": "Used at Open trial registry.",
-    "projects-4": "Used at Textbook chapter."
+    "projects-2": "Used at Rural clinic survey.",
+    "publications-1": "Used at Paper 2: vaccine uptake in region 2.",
+    "publications-6": "Used at Paper 7: vaccine uptake in region 7.",
+    "publications-21": "Used at Paper 22: vaccine uptake in region 22."
    }
   },
   {
@@ -412,9 +1196,20 @@
    "uses": {
     "work-3": "Used at Charité Universitätsmedizin.",
     "work-4": "Used at Medisight Analytics.",
-    "education-1": "Used at London School of Hygiene and Tropical Medicine.",
-    "education-3": "Used at Harvard Extension School.",
-    "projects-3": "Used at Health data standards working group."
+    "education-2": "Used at Karolinska Institutet.",
+    "projects-0": "Used at Open trial registry.",
+    "projects-2": "Used at Rural clinic survey.",
+    "publications-0": "Used at Paper 1: vaccine uptake in region 1.",
+    "publications-1": "Used at Paper 2: vaccine uptake in region 2.",
+    "publications-12": "Used at Paper 13: vaccine uptake in region 13.",
+    "publications-21": "Used at Paper 22: vaccine uptake in region 22.",
+    "publications-26": "Used at Paper 27: vaccine uptake in region 27.",
+    "publications-31": "Used at Paper 32: vaccine uptake in region 32.",
+    "publications-38": "Used at Paper 39: vaccine uptake in region 39.",
+    "talks-2": "Used at Conference talk 3.",
+    "talks-6": "Used at Conference talk 7.",
+    "talks-9": "Used at Conference talk 10.",
+    "talks-10": "Used at Conference talk 11."
    }
   },
   {
@@ -426,8 +1221,15 @@
     "work-5": "Used at Hospital Clínic de Barcelona.",
     "work-8": "Used at Healthbridge.",
     "work-9": "Used at Lumen Diagnostics.",
-    "education-3": "Used at Harvard Extension School.",
-    "parttime-1": "Used at Journal editor."
+    "projects-0": "Used at Open trial registry.",
+    "publications-5": "Used at Paper 6: vaccine uptake in region 6.",
+    "publications-20": "Used at Paper 21: vaccine uptake in region 21.",
+    "publications-22": "Used at Paper 23: vaccine uptake in region 23.",
+    "publications-23": "Used at Paper 24: vaccine uptake in region 24.",
+    "publications-25": "Used at Paper 26: vaccine uptake in region 26.",
+    "publications-30": "Used at Paper 31: vaccine uptake in region 31.",
+    "publications-32": "Used at Paper 33: vaccine uptake in region 33.",
+    "talks-2": "Used at Conference talk 3."
    }
   },
   {
@@ -436,7 +1238,20 @@
    "intro": "Regulatory affairs.",
    "uses": {
     "work-0": "Used at World Health Organization Regional Office for Europe.",
-    "work-7": "Used at Pfennig & Sohn Consulting."
+    "work-7": "Used at Pfennig & Sohn Consulting.",
+    "projects-1": "Used at Vaccine uptake dashboard.",
+    "publications-6": "Used at Paper 7: vaccine uptake in region 7.",
+    "publications-9": "Used at Paper 10: vaccine uptake in region 10.",
+    "publications-16": "Used at Paper 17: vaccine uptake in region 17.",
+    "publications-18": "Used at Paper 19: vaccine uptake in region 19.",
+    "talks-11": "Used at Conference talk 12.",
+    "talks-12": "Used at Conference talk 13.",
+    "talks-13": "Used at Conference talk 14.",
+    "credentials-0": "Used at Medical licence (Spain).",
+    "service-0": "Used at Journal editor.",
+    "field-deployments-0": "Used at Ebola response, Sierra Leone.",
+    "field-deployments-1": "Used at Cholera response, Yemen.",
+    "field-deployments-2": "Used at COVID-19 task force."
    }
   },
   {
@@ -445,7 +1260,14 @@
    "intro": "Health economics.",
    "uses": {
     "work-8": "Used at Healthbridge.",
-    "education-3": "Used at Harvard Extension School."
+    "education-1": "Used at London School of Hygiene and Tropical Medicine.",
+    "projects-1": "Used at Vaccine uptake dashboard.",
+    "publications-8": "Used at Paper 9: vaccine uptake in region 9.",
+    "publications-12": "Used at Paper 13: vaccine uptake in region 13.",
+    "publications-39": "Used at Paper 40: vaccine uptake in region 40.",
+    "talks-8": "Used at Conference talk 9.",
+    "talks-11": "Used at Conference talk 12.",
+    "field-deployments-1": "Used at Cholera response, Yemen."
    }
   },
   {
@@ -456,7 +1278,13 @@
     "work-2": "Used at Novacura Pharma.",
     "work-9": "Used at Lumen Diagnostics.",
     "work-11": "Used at Statens Serum Institut.",
-    "parttime-2": "Used at Board member."
+    "publications-6": "Used at Paper 7: vaccine uptake in region 7.",
+    "publications-21": "Used at Paper 22: vaccine uptake in region 22.",
+    "teaching-3": "Used at Summer school.",
+    "talks-0": "Used at Conference talk 1.",
+    "talks-3": "Used at Conference talk 4.",
+    "talks-4": "Used at Conference talk 5.",
+    "awards-0": "Used at Young Investigator Award."
    }
   },
   {
@@ -467,8 +1295,12 @@
     "work-4": "Used at Medisight Analytics.",
     "work-5": "Used at Hospital Clínic de Barcelona.",
     "work-6": "Used at Instituto de Salud Global.",
-    "education-0": "Used at Universidad de Barcelona.",
-    "education-1": "Used at London School of Hygiene and Tropical Medicine."
+    "publications-11": "Used at Paper 12: vaccine uptake in region 12.",
+    "publications-13": "Used at Paper 14: vaccine uptake in region 14.",
+    "teaching-0": "Used at Epidemiology 101.",
+    "teaching-1": "Used at Biostatistics for clinicians.",
+    "teaching-2": "Used at Trial design seminar.",
+    "talks-2": "Used at Conference talk 3."
    }
   },
   {
@@ -476,7 +1308,15 @@
    "label": "Machine learning",
    "intro": "Machine learning.",
    "uses": {
-    "projects-3": "Used at Health data standards working group."
+    "publications-0": "Used at Paper 1: vaccine uptake in region 1.",
+    "publications-9": "Used at Paper 10: vaccine uptake in region 10.",
+    "publications-10": "Used at Paper 11: vaccine uptake in region 11.",
+    "publications-15": "Used at Paper 16: vaccine uptake in region 16.",
+    "publications-28": "Used at Paper 29: vaccine uptake in region 29.",
+    "publications-33": "Used at Paper 34: vaccine uptake in region 34.",
+    "teaching-4": "Used at PhD supervision.",
+    "talks-0": "Used at Conference talk 1.",
+    "awards-1": "Used at ERC Starting Grant."
    }
   },
   {
@@ -487,8 +1327,12 @@
     "work-7": "Used at Pfennig & Sohn Consulting.",
     "work-8": "Used at Healthbridge.",
     "education-0": "Used at Universidad de Barcelona.",
-    "education-2": "Used at Karolinska Institutet.",
-    "parttime-2": "Used at Board member."
+    "projects-0": "Used at Open trial registry.",
+    "publications-3": "Used at Paper 4: vaccine uptake in region 4.",
+    "publications-6": "Used at Paper 7: vaccine uptake in region 7.",
+    "publications-15": "Used at Paper 16: vaccine uptake in region 16.",
+    "publications-31": "Used at Paper 32: vaccine uptake in region 32.",
+    "awards-2": "Used at Best paper 2019."
    }
   },
   {
@@ -497,9 +1341,12 @@
    "intro": "Teaching.",
    "uses": {
     "work-11": "Used at Statens Serum Institut.",
-    "education-2": "Used at Karolinska Institutet.",
     "education-3": "Used at Harvard Extension School.",
-    "projects-2": "Used at Rural clinic survey."
+    "projects-1": "Used at Vaccine uptake dashboard.",
+    "venture-0": "Used at Fernandez Health Advisory.",
+    "publications-22": "Used at Paper 23: vaccine uptake in region 23.",
+    "talks-9": "Used at Conference talk 10.",
+    "awards-3": "Used at Marie Curie Fellowship."
    }
   },
   {
@@ -509,9 +1356,14 @@
    "uses": {
     "work-9": "Used at Lumen Diagnostics.",
     "education-0": "Used at Universidad de Barcelona.",
-    "projects-2": "Used at Rural clinic survey.",
     "venture-0": "Used at Fernandez Health Advisory.",
-    "parttime-0": "Used at Guest lecturer."
+    "publications-4": "Used at Paper 5: vaccine uptake in region 5.",
+    "publications-17": "Used at Paper 18: vaccine uptake in region 18.",
+    "publications-29": "Used at Paper 30: vaccine uptake in region 30.",
+    "publications-35": "Used at Paper 36: vaccine uptake in region 36.",
+    "publications-39": "Used at Paper 40: vaccine uptake in region 40.",
+    "teaching-4": "Used at PhD supervision.",
+    "talks-1": "Used at Conference talk 2."
    }
   },
   {
@@ -521,7 +1373,15 @@
    "uses": {
     "work-0": "Used at World Health Organization Regional Office for Europe.",
     "work-6": "Used at Instituto de Salud Global.",
-    "venture-0": "Used at Fernandez Health Advisory."
+    "publications-3": "Used at Paper 4: vaccine uptake in region 4.",
+    "publications-7": "Used at Paper 8: vaccine uptake in region 8.",
+    "publications-9": "Used at Paper 10: vaccine uptake in region 10.",
+    "publications-11": "Used at Paper 12: vaccine uptake in region 12.",
+    "publications-20": "Used at Paper 21: vaccine uptake in region 21.",
+    "publications-27": "Used at Paper 28: vaccine uptake in region 28.",
+    "teaching-2": "Used at Trial design seminar.",
+    "talks-7": "Used at Conference talk 8.",
+    "talks-10": "Used at Conference talk 11."
    }
   },
   {
@@ -533,8 +1393,9 @@
     "work-4": "Used at Medisight Analytics.",
     "work-7": "Used at Pfennig & Sohn Consulting.",
     "work-11": "Used at Statens Serum Institut.",
-    "education-3": "Used at Harvard Extension School.",
-    "projects-0": "Used at Open trial registry."
+    "publications-10": "Used at Paper 11: vaccine uptake in region 11.",
+    "awards-0": "Used at Young Investigator Award.",
+    "service-0": "Used at Journal editor."
    }
   },
   {
@@ -543,10 +1404,14 @@
    "intro": "Stakeholder management.",
    "uses": {
     "education-0": "Used at Universidad de Barcelona.",
-    "education-2": "Used at Karolinska Institutet.",
-    "projects-3": "Used at Health data standards working group.",
-    "projects-5": "Used at Podcast.",
-    "parttime-0": "Used at Guest lecturer."
+    "publications-0": "Used at Paper 1: vaccine uptake in region 1.",
+    "publications-4": "Used at Paper 5: vaccine uptake in region 5.",
+    "publications-19": "Used at Paper 20: vaccine uptake in region 20.",
+    "publications-21": "Used at Paper 22: vaccine uptake in region 22.",
+    "publications-31": "Used at Paper 32: vaccine uptake in region 32.",
+    "talks-1": "Used at Conference talk 2.",
+    "talks-10": "Used at Conference talk 11.",
+    "service-2": "Used at Ethics committee."
    }
   },
   {
@@ -555,10 +1420,20 @@
    "intro": "Public speaking.",
    "uses": {
     "work-11": "Used at Statens Serum Institut.",
-    "education-2": "Used at Karolinska Institutet.",
-    "projects-0": "Used at Open trial registry.",
-    "projects-3": "Used at Health data standards working group.",
-    "parttime-1": "Used at Journal editor."
+    "education-3": "Used at Harvard Extension School.",
+    "projects-1": "Used at Vaccine uptake dashboard.",
+    "publications-7": "Used at Paper 8: vaccine uptake in region 8.",
+    "publications-14": "Used at Paper 15: vaccine uptake in region 15.",
+    "publications-20": "Used at Paper 21: vaccine uptake in region 21.",
+    "publications-29": "Used at Paper 30: vaccine uptake in region 30.",
+    "publications-31": "Used at Paper 32: vaccine uptake in region 32.",
+    "publications-33": "Used at Paper 34: vaccine uptake in region 34.",
+    "talks-3": "Used at Conference talk 4.",
+    "talks-4": "Used at Conference talk 5.",
+    "talks-5": "Used at Conference talk 6.",
+    "talks-8": "Used at Conference talk 9.",
+    "talks-13": "Used at Conference talk 14.",
+    "field-deployments-2": "Used at COVID-19 task force."
    }
   },
   {
@@ -567,8 +1442,17 @@
    "intro": "Budgeting.",
    "uses": {
     "work-2": "Used at Novacura Pharma.",
-    "education-2": "Used at Karolinska Institutet.",
-    "education-3": "Used at Harvard Extension School."
+    "education-3": "Used at Harvard Extension School.",
+    "publications-18": "Used at Paper 19: vaccine uptake in region 19.",
+    "publications-34": "Used at Paper 35: vaccine uptake in region 35.",
+    "publications-35": "Used at Paper 36: vaccine uptake in region 36.",
+    "publications-37": "Used at Paper 38: vaccine uptake in region 38.",
+    "publications-39": "Used at Paper 40: vaccine uptake in region 40.",
+    "teaching-0": "Used at Epidemiology 101.",
+    "teaching-3": "Used at Summer school.",
+    "credentials-2": "Used at Project Management Professional.",
+    "awards-2": "Used at Best paper 2019.",
+    "field-deployments-0": "Used at Ebola response, Sierra Leone."
    }
   },
   {
@@ -582,7 +1466,16 @@
     "work-8": "Used at Healthbridge.",
     "work-9": "Used at Lumen Diagnostics.",
     "work-11": "Used at Statens Serum Institut.",
-    "projects-1": "Used at Vaccine uptake dashboard."
+    "projects-2": "Used at Rural clinic survey.",
+    "publications-9": "Used at Paper 10: vaccine uptake in region 10.",
+    "publications-10": "Used at Paper 11: vaccine uptake in region 11.",
+    "publications-17": "Used at Paper 18: vaccine uptake in region 18.",
+    "publications-25": "Used at Paper 26: vaccine uptake in region 26.",
+    "publications-36": "Used at Paper 37: vaccine uptake in region 37.",
+    "teaching-0": "Used at Epidemiology 101.",
+    "credentials-0": "Used at Medical licence (Spain).",
+    "service-0": "Used at Journal editor.",
+    "field-deployments-0": "Used at Ebola response, Sierra Leone."
    }
   },
   {
@@ -597,9 +1490,13 @@
     "work-9": "Used at Lumen Diagnostics.",
     "work-10": "Used at Clinica Vida.",
     "education-0": "Used at Universidad de Barcelona.",
-    "projects-1": "Used at Vaccine uptake dashboard.",
-    "projects-3": "Used at Health data standards working group.",
-    "projects-5": "Used at Podcast."
+    "education-2": "Used at Karolinska Institutet.",
+    "publications-0": "Used at Paper 1: vaccine uptake in region 1.",
+    "publications-2": "Used at Paper 3: vaccine uptake in region 3.",
+    "publications-17": "Used at Paper 18: vaccine uptake in region 18.",
+    "publications-24": "Used at Paper 25: vaccine uptake in region 25.",
+    "awards-3": "Used at Marie Curie Fellowship.",
+    "service-2": "Used at Ethics committee."
    }
   },
   {
@@ -607,8 +1504,17 @@
    "label": "Health policy",
    "intro": "Health policy.",
    "uses": {
-    "projects-2": "Used at Rural clinic survey.",
-    "parttime-1": "Used at Journal editor."
+    "projects-0": "Used at Open trial registry.",
+    "publications-5": "Used at Paper 6: vaccine uptake in region 6.",
+    "publications-17": "Used at Paper 18: vaccine uptake in region 18.",
+    "publications-26": "Used at Paper 27: vaccine uptake in region 27.",
+    "publications-27": "Used at Paper 28: vaccine uptake in region 28.",
+    "publications-29": "Used at Paper 30: vaccine uptake in region 30.",
+    "teaching-1": "Used at Biostatistics for clinicians.",
+    "talks-0": "Used at Conference talk 1.",
+    "talks-4": "Used at Conference talk 5.",
+    "talks-13": "Used at Conference talk 14.",
+    "field-deployments-1": "Used at Cholera response, Yemen."
    }
   },
   {
@@ -619,7 +1525,14 @@
     "work-0": "Used at World Health Organization Regional Office for Europe.",
     "work-5": "Used at Hospital Clínic de Barcelona.",
     "work-9": "Used at Lumen Diagnostics.",
-    "projects-5": "Used at Podcast."
+    "publications-2": "Used at Paper 3: vaccine uptake in region 3.",
+    "publications-20": "Used at Paper 21: vaccine uptake in region 21.",
+    "publications-28": "Used at Paper 29: vaccine uptake in region 29.",
+    "publications-38": "Used at Paper 39: vaccine uptake in region 39.",
+    "teaching-1": "Used at Biostatistics for clinicians.",
+    "talks-6": "Used at Conference talk 7.",
+    "talks-9": "Used at Conference talk 10.",
+    "talks-13": "Used at Conference talk 14."
    }
   },
   {
@@ -630,8 +1543,14 @@
     "work-5": "Used at Hospital Clínic de Barcelona.",
     "work-6": "Used at Instituto de Salud Global.",
     "work-11": "Used at Statens Serum Institut.",
-    "projects-5": "Used at Podcast.",
-    "venture-0": "Used at Fernandez Health Advisory."
+    "projects-2": "Used at Rural clinic survey.",
+    "publications-1": "Used at Paper 2: vaccine uptake in region 2.",
+    "publications-2": "Used at Paper 3: vaccine uptake in region 3.",
+    "publications-3": "Used at Paper 4: vaccine uptake in region 4.",
+    "publications-11": "Used at Paper 12: vaccine uptake in region 12.",
+    "publications-13": "Used at Paper 14: vaccine uptake in region 14.",
+    "talks-6": "Used at Conference talk 7.",
+    "service-2": "Used at Ethics committee."
    }
   },
   {
@@ -640,8 +1559,14 @@
    "intro": "Spanish.",
    "uses": {
     "education-1": "Used at London School of Hygiene and Tropical Medicine.",
-    "projects-2": "Used at Rural clinic survey.",
-    "venture-0": "Used at Fernandez Health Advisory."
+    "venture-0": "Used at Fernandez Health Advisory.",
+    "publications-1": "Used at Paper 2: vaccine uptake in region 2.",
+    "publications-3": "Used at Paper 4: vaccine uptake in region 4.",
+    "publications-10": "Used at Paper 11: vaccine uptake in region 11.",
+    "publications-18": "Used at Paper 19: vaccine uptake in region 19.",
+    "publications-36": "Used at Paper 37: vaccine uptake in region 37.",
+    "publications-38": "Used at Paper 39: vaccine uptake in region 39.",
+    "talks-0": "Used at Conference talk 1."
    }
   },
   {
@@ -650,8 +1575,14 @@
    "intro": "Portuguese.",
    "uses": {
     "work-8": "Used at Healthbridge.",
-    "education-2": "Used at Karolinska Institutet.",
-    "projects-4": "Used at Textbook chapter."
+    "publications-32": "Used at Paper 33: vaccine uptake in region 33.",
+    "publications-33": "Used at Paper 34: vaccine uptake in region 34.",
+    "teaching-4": "Used at PhD supervision.",
+    "talks-1": "Used at Conference talk 2.",
+    "talks-9": "Used at Conference talk 10.",
+    "talks-10": "Used at Conference talk 11.",
+    "credentials-1": "Used at Good Clinical Practice.",
+    "service-1": "Used at Board member, Health Data Society."
    }
   }
  ]

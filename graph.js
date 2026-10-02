@@ -27,22 +27,38 @@
   const safeUrl = u => /^(https?:\/\/|mailto:|assets\/)/i.test(u || '') ? u : null;
   const initials = () => net.name.split(/\s+/).filter(Boolean).slice(0, 2).map(p => p[0].toUpperCase()).join('');
 
-  const SHAPES = { company: 'M0,-10L10,0L0,10L-10,0Z', parttime: 'M0,-7L7,0L0,7L-7,0Z', project: 'M9,0L4.5,7.8L-4.5,7.8L-9,0L-4.5,-7.8L4.5,-7.8Z', education: 'M-7,-7H7V7H-7Z', personal: 'M0,-8L8,6H-8Z' };
-  const BASE = { company: 10, parttime: 7, project: 9, education: 7, personal: 8 };
-  const COLORS = { company: '#E0C58F', parttime: '#E0C58F', project: '#B7A3E0', education: '#8FB3E0', personal: '#E39E9E' };
-  const SHAPE_OF = { work: 'company', venture: 'company', projects: 'project', parttime: 'parttime', education: 'education', personal: 'personal' };
-  // the groups, in the order they claim a column
-  const THEMES = { work: 'Work experience', education: 'Education', projects: 'Projects', venture: 'Entrepreneurship', parttime: 'Part-time jobs', personal: 'Hobbies' };
-  const LEGEND = { company: 'Company', parttime: 'Part-time job', project: 'Project', education: 'Education', personal: 'Hobby' };
+  // mark shapes: [path, radius]
+  const SHAPES = {
+    diamond: ['M0,-10L10,0L0,10L-10,0Z', 10], square: ['M-7,-7H7V7H-7Z', 7], hexagon: ['M9,0L4.5,7.8L-4.5,7.8L-9,0L-4.5,-7.8L4.5,-7.8Z', 9],
+    pentagon: ['M0,-9L8.6,-2.8L5.3,7.3L-5.3,7.3L-8.6,-2.8Z', 9], triangle: ['M0,-8L8,6H-8Z', 8], wedge: ['M0,8L8,-6H-8Z', 8],
+  };
+  const gold = '#E0C58F', violet = '#B7A3E0', blue = '#8FB3E0', rose = '#E39E9E', teal = '#8FD0C0', orange = '#E0A77A';
+  // The standard groups, in the order they claim a column: [caption, shape, colour]. See research/2026-10-02-resume-sections.md.
+  const GROUPS = {
+    work: ['Work experience', 'diamond', gold], education: ['Education', 'square', blue], projects: ['Projects', 'hexagon', violet],
+    venture: ['Entrepreneurship', 'diamond', orange], freelance: ['Freelance and clients', 'diamond', teal],
+    publications: ['Research and publications', 'pentagon', blue], teaching: ['Teaching and mentoring', 'pentagon', violet],
+    talks: ['Talks and press', 'hexagon', rose], exhibitions: ['Exhibitions and works', 'hexagon', teal],
+    credentials: ['Credentials', 'square', teal], awards: ['Awards and funding', 'pentagon', gold],
+    service: ['Service and membership', 'wedge', blue], volunteering: ['Volunteering and activities', 'wedge', orange],
+    personal: ['Hobbies', 'triangle', rose], other: ['Other', 'square', rose],
+  };
+  const SPARE = [['wedge', violet], ['pentagon', orange], ['hexagon', gold], ['square', rose]]; // marks for groups the file names itself
 
-  // drop references to things that are not there, so one bad id cannot blank the page
+  // Resolve the groups: the standard ones in use, then any the file names itself (a resume heading that fits none of ours
+  // keeps its own name). Drop references to things that are not there, so one bad id cannot blank the page.
   function clean(d) {
     d.nodes ||= []; d.skills ||= [];
     const skillIds = new Set(d.skills.map(k => k.id)), nodeIds = new Set(d.nodes.map(n => n.id));
     d.nodes.forEach(n => {
       n.skills = (n.skills || []).filter(k => skillIds.has(k));
       if (!nodeIds.has(n.parent) || n.parent === n.id) delete n.parent;
-      if (!THEMES[n.group]) n.group = 'work';
+      n.group = String(n.group || 'other');
+    });
+    const named = Object.fromEntries((d.groups || []).map(g => [g.id, g.label])), used = [...new Set(d.nodes.map(n => n.group))];
+    d.groups = [...Object.keys(GROUPS).filter(id => used.includes(id)), ...used.filter(id => !GROUPS[id])].map((id, i) => {
+      const [label, shape, color] = GROUPS[id] || [id, ...SPARE[i % SPARE.length]];
+      return { id, label: named[id] || label, shape, color };
     });
     return d;
   }
@@ -55,6 +71,7 @@
     const photo = safeUrl(net.photo), btn = $('#portrait');
     btn.replaceChildren(photo ? h('img', { src: photo, alt: net.name, width: 300, height: 300 }) : h('span', { class: 'initials', text: initials() }));
     if (!photo) btn.setAttribute('aria-label', net.name);
+    $('.langs').textContent = (net.languages || []).map(l => l.level ? `${l.label} (${l.level})` : l.label).join(' · ');
     const cv = safeUrl(net.cv);
     $$('[data-cv]').forEach(a => { a.hidden = !cv; if (cv) a.setAttribute('href', cv); });
     $$('.links').forEach(box => box.replaceChildren(...(net.links || []).filter(l => safeUrl(l.url)).map(l =>
@@ -91,10 +108,7 @@
       return h('li', {}, [b, meta ? h('p', { class: 'meta', text: meta }) : null]);
     };
     $('.stage').appendChild(h('div', { class: 'mlist' }, [
-      ...Object.entries(THEMES).flatMap(([k, title]) => {
-        const ms = net.nodes.filter(n => n.group === k);
-        return ms.length ? [h('h2', { text: title }), h('ul', {}, ms.map(n => item(n.label, n.kind, { kind: 'node', id: n.id })))] : [];
-      }),
+      ...net.groups.flatMap(gp => [h('h2', { text: gp.label }), h('ul', {}, net.nodes.filter(n => n.group === gp.id).map(n => item(n.label, n.kind, { kind: 'node', id: n.id })))]),
       ...(net.skills.length ? [h('h2', { text: 'Skills' }), h('ul', {}, net.skills.map(k => item(k.label, null, { kind: 'skill', id: k.id })))] : []),
     ]));
   }
@@ -158,11 +172,31 @@
     stage.insertBefore(svg, $('#graph-alt'));
     parts = { photo: { x: cx, y: cy }, photoR: pr };
 
+    // Rows in two columns either side of the photo, one block per group. Each group goes into the shorter column, so the
+    // sides stay balanced. A long group (forty publications) shows its first rows and one "+ N more" row that opens the
+    // full list; the row limit drops until both columns fit the height.
+    const rowsIn = col => col.reduce((s, ms) => s + ms.length + 2, 0); // two empty rows between groups, for the caption
+    let cols, hidden;
+    for (let cap = 9; ; cap--) {
+      cols = [[], []]; hidden = {};
+      net.groups.forEach((gp, i) => {
+        const keep = i ? cap : cap * 2; // the first group (work, on most resumes) keeps twice the rows
+        const all = net.nodes.filter(n => n.group === gp.id), rest = all.length > keep + 1 ? all.slice(keep) : [];
+        const ms = all.slice(0, all.length - rest.length).map(n => ({ ...n, type: 'exp' }));
+        if (rest.length) {
+          rest.forEach(n => { hidden[n.id] = 'more:' + gp.id; });
+          ms.push({ id: 'more:' + gp.id, type: 'exp', more: true, group: gp.id, label: `+ ${rest.length} more`, skills: [...new Set(rest.flatMap(n => n.skills))] });
+        }
+        cols[rowsIn(cols[1]) < rowsIn(cols[0]) ? 1 : 0].push(ms);
+      });
+      if (cap <= 2 || Math.max(...cols.map(rowsIn)) - 2 <= .7 * hgt / 24) break;
+    }
+    const groupOf = Object.fromEntries(net.groups.map(gp => [gp.id, gp])), expNodes = cols.flat(2);
     const nodes = [{ id: 'me', type: 'me', label: net.name, x: cx, y: cy, bb: { x: -pr, y: -pr, width: 2 * pr, height: 2 * pr } }]
-      .concat(net.nodes.map(n => ({ ...n, type: 'exp', shape: SHAPE_OF[n.group] })), net.skills.map(k => ({ ...k, id: 's:' + k.id, type: 'skill' })));
+      .concat(expNodes, net.skills.map(k => ({ ...k, id: 's:' + k.id, type: 'skill' })));
     const byId = Object.fromEntries(nodes.map(n => [n.id, n]));
-    const links = net.nodes.map(n => ({ source: byId[n.parent || 'me'], target: byId[n.id], story: true }))
-      .concat(net.nodes.flatMap(n => n.skills.map(k => ({ source: byId[n.id], target: byId['s:' + k] }))));
+    const links = expNodes.map(n => ({ source: byId[n.parent] || byId.me, target: n, story: true }))
+      .concat(expNodes.flatMap(n => n.skills.map(k => ({ source: n, target: byId['s:' + k] }))));
 
     const g = el('g', { class: 'net-g' }, svg), themeG = el('g', {}, g), bandG = el('g', {}, g), linkG = el('g', {}, g), nodeG = el('g', {}, g);
     const lineEls = links.map(l => el('line', { class: l.story ? 'nl' : 'nl skill' }, linkG));
@@ -179,30 +213,25 @@
       n.y = cy + hgt * skillStep * (Math.floor(i / 2) - (skillRows - 1) / 2);
     });
 
-    // Everything else: rows in two columns either side of the photo, one block per group, labels pointing outwards.
-    // Each group goes into the shorter column, so the two sides stay balanced.
-    // ponytail: rows shrink to fit and overlap past about 25 rows a side; the extraction step caps how many nodes a resume gets.
-    const cols = [[], []], rowsIn = col => col.reduce((s, ms) => s + ms.length + 2, 0); // two empty rows between groups, for the caption
-    Object.keys(THEMES).map(k => nodes.filter(n => n.type === 'exp' && n.group === k)).filter(ms => ms.length)
-      .forEach(ms => cols[rowsIn(cols[1]) < rowsIn(cols[0]) ? 1 : 0].push(ms));
     const off = pr + 60, maxChars = Math.max(12, Math.floor((half - off - skillWidth - 50) / 7.8));
     const short = s => s.length > maxChars ? s.slice(0, maxChars - 1).trimEnd() + '…' : s;
     cols.forEach((col, right) => {
       const rows = rowsIn(col) - 2, step = Math.min(.075, .7 / Math.max(1, rows - 1)), side = right ? 1 : -1;
       // area follows time spent, floored so short roles stay clickable and capped so a row never touches the next
       const maxR = Math.min(26, step * hgt * .42), all = col.flat();
-      all.forEach(n => { n.r = n.months ? Math.min(maxR, Math.max(11, 26 * Math.sqrt(n.months / 70))) : Math.min(maxR, BASE[n.shape]); });
+      all.forEach(n => { n.r = n.more ? 4 : n.months ? Math.min(maxR, Math.max(11, 26 * Math.sqrt(n.months / 70))) : Math.min(maxR, SHAPES[groupOf[n.group].shape][1]); });
       const colR = Math.max(...all.map(n => n.r));
       let y = -step * (rows - 1) / 2;
       col.forEach(ms => { ms.forEach(n => {
         n.x = cx + side * off; n.y = cy + hgt * y; y += step;
-        const e = add(n), col = COLORS[n.shape], b = BASE[n.shape], sg = el('g', { transform: `scale(${n.r / b})` }, e), logo = safeUrl(n.logo);
-        if (logo) { // the logo fills the shape
-          el('clipPath', { id: 'logo-' + n.id }, sg).appendChild(el('path', { d: SHAPES[n.shape] }));
-          el('path', { d: SHAPES[n.shape], fill: '#fff' }, sg);
+        const e = add(n), gp = groupOf[n.group], [path, b] = SHAPES[gp.shape], sg = el('g', { transform: `scale(${n.r / b})` }, e), logo = safeUrl(n.logo);
+        if (n.more) { e.classList.add('more'); el('path', { d: path, fill: 'none', stroke: gp.color, 'stroke-width': 1.5, 'vector-effect': 'non-scaling-stroke' }, sg); }
+        else if (logo) { // the logo fills the shape
+          el('clipPath', { id: 'logo-' + n.id }, sg).appendChild(el('path', { d: path }));
+          el('path', { d: path, fill: '#fff' }, sg);
           el('image', { href: logo, x: -b * .8, y: -b * .8, width: b * 1.6, height: b * 1.6, 'clip-path': `url(#logo-${n.id})`, preserveAspectRatio: 'xMidYMid slice' }, sg);
-          el('path', { d: SHAPES[n.shape], fill: 'none', stroke: col, 'stroke-width': 1.5, 'vector-effect': 'non-scaling-stroke' }, sg);
-        } else el('path', { d: SHAPES[n.shape], fill: col }, sg);
+          el('path', { d: path, fill: 'none', stroke: gp.color, 'stroke-width': 1.5, 'vector-effect': 'non-scaling-stroke' }, sg);
+        } else el('path', { d: path, fill: gp.color }, sg);
         el('text', { x: side * (colR + 7), y: 5, 'text-anchor': right ? 'start' : 'end' }, e).textContent = short(n.label);
       }); y += step * 2; });
     });
@@ -214,15 +243,7 @@
       const x0 = Math.min(...ms.map(n => n.x1 + n.bb.x)) - 14, x1 = Math.max(...ms.map(n => n.x1 + n.bb.x + n.bb.width)) + 14;
       const y0 = Math.min(...ms.map(n => n.y1 + n.bb.y)) - 10, y1 = Math.max(...ms.map(n => n.y1 + n.bb.y + n.bb.height)) + 10;
       el('rect', { class: 'net-theme', x: x0, y: y0, width: x1 - x0, height: y1 - y0, rx: 18 }, themeG);
-      el('text', { class: 'net-area', x: x0 + 14, y: y0 - 8 }, themeG).textContent = THEMES[ms[0].group];
-    });
-    const lg = el('g', { class: 'net-legend', transform: `translate(32,${hgt - 24})` }, svg);
-    let lx = 0; // each entry is as wide as its label; only the shapes this profile uses
-    [...Object.entries(LEGEND).filter(([shape]) => nodes.some(n => n.shape === shape)), ...(skillNodes.length ? [['skill', 'Skill']] : [])].forEach(([shape, txt]) => {
-      if (shape === 'skill') el('circle', { cx: lx + 7, cy: -4, r: 4, class: 'skill-dot' }, lg);
-      else el('path', { d: SHAPES[shape], fill: COLORS[shape], transform: `translate(${lx + 7},-4) scale(${shape === 'parttime' ? .7 : .6})` }, lg);
-      el('text', { x: lx + 20, y: 0 }, lg).textContent = txt;
-      lx += 20 + txt.length * 7.3 + 24;
+      el('text', { class: 'net-area', x: x0 + 14, y: y0 - 8 }, themeG).textContent = groupOf[ms[0].group].label;
     });
 
     const place = (p = 1, at = null) => {
@@ -234,7 +255,7 @@
       nodeEls.forEach(([n, e]) => e.setAttribute('transform', `translate(${n.x},${n.y})`));
     };
     let raf = 0;
-    const order = n => n.type === 'exp' ? 1 + net.nodes.findIndex(x => x.id === n.id) * .35 : 5 + nodes.indexOf(n) * .04;
+    const order = n => n.type === 'exp' ? 1 + expNodes.indexOf(n) * .35 : 5 + nodes.indexOf(n) * .04;
     const unfold = done => {
       const t0 = performance.now();
       g.classList.add('unfolding'); // no hover fade while the unfold drives opacity
@@ -266,7 +287,8 @@
     };
     let current = null;
     const mark = sel => {
-      current = sel ? (sel.kind === 'skill' ? 's:' + sel.id : sel.id) : null;
+      const id = !sel ? null : sel.kind === 'skill' ? 's:' + sel.id : sel.kind === 'group' ? 'more:' + sel.id : hidden[sel.id] || sel.id; // a row hidden behind "+ N more" lights that row
+      current = byId[id] ? id : null;
       nodeEls.forEach(([n, e]) => e.classList.toggle('current', n.id === current));
       light(current);
       frame(current);
@@ -284,7 +306,7 @@
       const on = () => light(n.id), off = () => light(current);
       e.addEventListener('mouseenter', on); e.addEventListener('focus', on);
       e.addEventListener('mouseleave', off); e.addEventListener('blur', off);
-      const open = () => openPanel(n.type === 'skill' ? { kind: 'skill', id: n.id.slice(2) } : { kind: 'node', id: n.id }, e);
+      const open = () => openPanel(n.type === 'skill' ? { kind: 'skill', id: n.id.slice(2) } : n.more ? { kind: 'group', id: n.group } : { kind: 'node', id: n.id }, e);
       e.addEventListener('click', open);
       e.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); open(); } });
     });
@@ -339,11 +361,18 @@
         (k.uses || {})[n.id] ? h('p', { class: 'use', text: k.uses[n.id] }) : null]))),
     ];
   }
+  // A group's panel: every entry in it, including the ones the graph folds into "+ N more".
+  function groupSection(id) {
+    return [
+      h('h2', { id: 'panel-title', text: net.groups.find(x => x.id === id).label }),
+      h('ul', { class: 'theme-roles' }, net.nodes.filter(n => n.group === id).map(n => h('li', {}, [h('button', { type: 'button', 'data-open-node': n.id, text: n.label }), h('p', { class: 'meta', text: n.kind }), h('p', { text: n.text })]))),
+    ];
+  }
   function openPanel(sel, from) {
     const panel = $('#panel'), body = $('.panel-body', panel);
     panelFor = sel;
     if (from) lastFocus = from;
-    body.replaceChildren(...(sel.kind === 'skill' ? skillSection(sel.id) : nodeSection(sel.id)).filter(Boolean));
+    body.replaceChildren(...(sel.kind === 'skill' ? skillSection(sel.id) : sel.kind === 'group' ? groupSection(sel.id) : nodeSection(sel.id)).filter(Boolean));
     $$('[data-open-node]', body).forEach(b => b.addEventListener('click', () => openPanel({ kind: 'node', id: b.dataset.openNode })));
     $$('[data-open-skill]', body).forEach(b => b.addEventListener('click', () => openPanel({ kind: 'skill', id: b.dataset.openSkill })));
     document.body.classList.add('panel-open');

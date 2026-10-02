@@ -64,7 +64,7 @@ h1 { font: 600 40px/1.1 var(--sans); margin-top: 32px; }
 @keyframes ring { from { transform: scale(1); opacity: .7; } to { transform: scale(1.18); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .portrait::after { animation: none; opacity: 0; } }
 .reveal .next { max-width: 52ch; color: var(--text); }
-.reveal .next:empty { display: none; }
+.reveal .next:empty, .langs:empty { display: none; }
 
 /* 2. The reveal: CV and links */
 .reveal { margin-top: 24px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
@@ -113,7 +113,8 @@ svg .photo-initials { font: 600 26px/1 var(--sans); fill: var(--text); }
 .net .nn text { fill: var(--muted); font: 12px/1 var(--mono); pointer-events: none; }
 .net .nn.skill text { pointer-events: auto; cursor: pointer; }
 .net .nn.exp text { fill: var(--text); font: 600 14px/1 var(--sans); }
-.net .nn.skill circle, .net .skill-dot { fill: var(--moss-dim); }
+.net .nn.skill circle { fill: var(--moss-dim); }
+.net .nn.more text { fill: var(--muted); font-weight: 400; }
 .net .nn.dim { opacity: .18; }
 .net .nn.on text, .net .nn.current text { fill: var(--moss); }
 .net .nn:focus-visible text { text-decoration: underline; }
@@ -121,7 +122,6 @@ svg .photo-initials { font: 600 26px/1 var(--sans); fill: var(--text); }
 .net .band line { stroke: var(--moss); stroke-width: 30; stroke-linecap: round; }
 .net .band circle { fill: var(--moss); }
 .net .net-area { fill: var(--faint); font: 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
-.net .net-legend text { fill: var(--muted); font: 12px var(--mono); }
 .net .net-theme { fill: var(--moss); fill-opacity: .035; stroke: var(--faint); stroke-opacity: .5; stroke-dasharray: 3 5; }
 .net .unfolding .nn { transition: none; }
 
@@ -134,7 +134,7 @@ svg .photo-initials { font: 600 26px/1 var(--sans); fill: var(--text); }
   visibility: hidden;
 }
 .panel-open .panel { transform: none; visibility: visible; transition: transform var(--slide); }
-.panel-open .net-area, .panel-open .net-legend { opacity: 0; }
+.panel-open .net-area { opacity: 0; }
 .panel-close {
   position: absolute; top: 20px; right: 24px; background: none; border: 0; cursor: pointer;
   font: 400 13px/1.5 var(--mono); color: var(--muted); padding: 12px 8px;
@@ -223,10 +223,6 @@ svg .photo-initials { font: 600 26px/1 var(--sans); fill: var(--text); }
   .panel h2, .contact h2 { font-size: 20px; }
   .links a { padding: 12px 0; }
   .tag { padding: 15px 0; }
-}
-
-@media (min-width: 720px) and (max-width: 1100px) {
-  .net-legend { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
