@@ -7,6 +7,8 @@ one sentence saying what was done there with it.
 
 The result is one HTML file. Plain HTML, CSS and JavaScript, no build step, no libraries.
 
+See examples: https://resume-hypergraph.vercel.app
+
 ## Ways to use it
 
 **1. With Claude Code (the full version).** Inside Claude Code:
