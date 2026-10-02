@@ -9,7 +9,7 @@ cdp("Network.setCacheDisabled", cacheDisabled=True)
 cdp("Emulation.setEmulatedMedia", features=[{"name": "prefers-reduced-motion", "value": "reduce"}])
 for width, height in ((1024, 768), (1280, 720), (1440, 900), (1920, 1080)):
     cdp("Emulation.setDeviceMetricsOverride", width=width, height=height, deviceScaleFactor=1, mobile=False)
-    for sample in ("short", "profile", "long", "varun"):
+    for sample in ("short", "profile", "long"):
         goto_url(f"{base}/view/?p={sample}&w={width}#work")
         wait_for_load()
         time.sleep(.7)

@@ -7,8 +7,8 @@ one sentence saying what was done there with it.
 
 The result is one HTML file. Plain HTML, CSS and JavaScript, no build step, no libraries.
 
-See examples: https://resume-hypergraph.vercel.app. The main one is the author's own profile; the
-tool grew out of his site, [varunmoka.com](https://varunmoka.com).
+See it live: [varunmoka.com](https://varunmoka.com), the site this tool grew out of. More
+examples with made-up people: https://resume-hypergraph.vercel.app
 
 ## Ways to use it
 
@@ -64,8 +64,8 @@ examples in `view/data/`) and build:
 
     python3 scripts/serve.py 8131
 
-- http://localhost:8131/view/ is the graph (`?p=short`, `?p=long` and `?p=varun` for the other
-  samples). `varun` is the author's real profile; the people and companies in the others are made up.
+- http://localhost:8131/view/ is the graph (`?p=short` and `?p=long` for the other samples).
+  All sample people and companies are made up.
 - http://localhost:8131/ is the front page: examples, how to make your own, and a drop zone
   that opens a data file the tool made so you can see the graph, edit it and download the page.
   It does not read resumes; the tool does that inside your agent.
