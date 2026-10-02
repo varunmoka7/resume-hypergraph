@@ -1,6 +1,6 @@
 {
   "name": "resume-graph",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Turn a resume into an interactive graph page for a personal website.",
   "contextFileName": "AGENTS.md"
 }
