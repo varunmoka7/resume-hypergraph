@@ -2,6 +2,7 @@
 // Checks a profile data file and builds the one-file page from it. No dependencies.
 //   node scripts/profile.mjs check <profile.json> [resume.txt]
 //   node scripts/profile.mjs build <profile.json> <out.html> [resume.txt]
+//   node scripts/profile.mjs logos <profile.json>     fetch a logo for every entry that has org.url and no logo
 // With resume.txt, every number in the profile's sentences must also appear in the resume.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -79,9 +80,42 @@ export function build(d, viewDir) {
   return swap(html, '<script src="graph.js" defer></script>', `<script>window.PROFILE=${data}</script>\n<script>document.addEventListener('DOMContentLoaded',()=>{${read('graph.js')}})</script>`);
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
+// An organisation's logo, from its own site: the icon it publishes for phone home screens, else its favicon
+// (through Google's favicon service, which returns a PNG). Stored inside the data, so the page stays one file.
+export async function findLogo(siteUrl) {
+  const site = new URL(siteUrl);
+  if (!/^https?:$/.test(site.protocol)) return null;
+  const get = u => fetch(u, { redirect: 'follow', signal: AbortSignal.timeout(8000), headers: { 'user-agent': 'Mozilla/5.0 (resume-hypergraph)' } });
+  const candidates = [];
+  try {
+    for (const tag of (await (await get(site.href)).text()).match(/<link\b[^>]*>/gi) || []) {
+      const href = /href=["']?([^"'\s>]+)/i.exec(tag)?.[1];
+      if (href && /rel=["']?[^"'>]*apple-touch-icon/i.test(tag)) candidates.push(new URL(href, site.href).href);
+    }
+  } catch { /* the site is down or blocks scripts: fall through to the favicon */ }
+  candidates.push(site.origin + '/apple-touch-icon.png', `https://www.google.com/s2/favicons?domain=${site.hostname}&sz=128`);
+  for (const u of candidates) {
+    try {
+      const r = await get(u), type = (r.headers.get('content-type') || '').split(';')[0].trim();
+      if (!r.ok || !/^image\/(png|jpeg|webp)$/.test(type)) continue;
+      const buf = Buffer.from(await r.arrayBuffer());
+      if (buf.length < 300 || buf.length > 150_000) continue; // a blank placeholder, or too heavy to carry in the page
+      return `data:${type};base64,${buf.toString('base64')}`;
+    } catch { /* try the next one */ }
+  }
+  return null;
+}
+
+if (process.argv[1] === fileURLToPath(import.meta.url) && process.argv[2] === 'logos') {
+  const file = process.argv[3], d = JSON.parse(fs.readFileSync(file, 'utf8'));
+  const todo = (d.nodes || []).filter(n => !n.logo && n.org && n.org.url);
+  const found = await Promise.all(todo.map(n => findLogo(n.org.url).catch(() => null)));
+  todo.forEach((n, i) => { if (found[i]) n.logo = found[i]; console.log(`${found[i] ? 'logo   ' : 'no logo'} ${n.id}  ${n.org.url}`); });
+  fs.writeFileSync(file, JSON.stringify(d, null, 2) + '\n');
+  console.log(`${found.filter(Boolean).length} of ${todo.length} logos added to ${file}`);
+} else if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const [cmd, file, a, b] = process.argv.slice(2), isBuild = cmd === 'build', resumeFile = isBuild ? b : a;
-  if (!['check', 'build'].includes(cmd) || !file || (isBuild && !a)) { console.error('usage: profile.mjs check <profile.json> [resume.txt]\n       profile.mjs build <profile.json> <out.html> [resume.txt]'); process.exit(2); }
+  if (!['check', 'build'].includes(cmd) || !file || (isBuild && !a)) { console.error('usage: profile.mjs check <profile.json> [resume.txt]\n       profile.mjs build <profile.json> <out.html> [resume.txt]\n       profile.mjs logos <profile.json>'); process.exit(2); }
   const d = JSON.parse(fs.readFileSync(file, 'utf8'));
   const { errors, warnings } = check(d, resumeFile ? fs.readFileSync(resumeFile, 'utf8') : null);
   warnings.forEach(w => console.log('warning: ' + w));
