@@ -21,7 +21,7 @@ Read `PROFILE-FORMAT.md` (next to this file) before writing any data.
 
 Do all six steps without stopping to ask. The person asked for a graph, and a finished page they can look at is easier to judge than questions about a draft. Stop only if there is no resume to read. Things you would have asked go in the final message as "say if you want this changed".
 
-**Which file:** the one the person gave. If they gave none, look in the current folder for a PDF, Word or text file whose name contains cv, resume, lebenslauf or curriculum. One match: use it. Several that look like versions of the same person's resume: use them all. None: ask for the file.
+**Which file:** the one the person gave. If they gave none, look in the current folder for a PDF, Word or text file whose name contains cv, resume, lebenslauf or curriculum. One match: use it, even if the name on it is not the name of the person you are talking to (people make graphs for others); say whose resume you used in the final message. Several that look like versions of the same person's resume: use them all. None: ask for the file. Look only in the current folder; do not go through the person's other folders for a resume.
 
 **Contact links, without asking:** keep the public profile links printed on the resume (LinkedIn, GitHub, a personal site, a portfolio). Leave out the email address and everything else in rule 3.
 
