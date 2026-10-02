@@ -31,7 +31,8 @@ around you, and every skill is connected to the places you used it.
   searching the whole resume.
 - **Click an employer or school** to see what the organisation does, the candidate's role and
   dates, and the work they did.
-- **Opens in any browser.** On a phone the same content is shown as a simple list.
+- **Opens in a web browser.** Nothing to install. On a phone the same content is shown as a
+  simple list.
 
 ## Quick start
 
@@ -59,14 +60,17 @@ To name the file yourself: `/resume-graph:resume-graph my-cv.pdf`
 
 ## Other tools
 
-| Tool | How to install |
-|---|---|
-| Claude on the web | Download [resume-graph.zip](https://github.com/varunmoka7/resume-hypergraph/releases/latest/download/resume-graph.zip) and upload it under Settings, Capabilities, Skills. Then share your resume in a chat and ask for a graph. Not yet tested there. |
-| Codex | `sh scripts/pack-skill.sh`, then `cp -R dist/resume-graph ~/.codex/skills/` |
-| Gemini CLI | `gemini extensions install https://github.com/varunmoka7/resume-hypergraph` |
-| Cursor and others | Clone this repo, open it in the tool and say "turn my resume at ~/cv.pdf into a graph". `AGENTS.md` tells it what to do. |
-| Tools with a skills folder | `sh scripts/pack-skill.sh`, then copy `dist/resume-graph` into the folder (`~/.agents/skills/` is common). |
-| No AI tool | Write `profile.json` by hand (format: `skills/resume-graph/PROFILE-FORMAT.md`) and run `node scripts/profile.mjs build my-profile.json index.html` |
+Only the routes marked "Yes" have been run so far. The others are written down as they should
+work and have not been tried.
+
+| Tool | How to install | Tried |
+|---|---|---|
+| Codex | Clone this repo, open it in Codex and say "turn my resume at ~/cv.pdf into a graph". `AGENTS.md` tells it what to do. | Yes |
+| Cursor and others | Same as Codex: clone, open, ask. | No |
+| Claude on the web | Download [resume-graph.zip](https://github.com/varunmoka7/resume-hypergraph/releases/latest/download/resume-graph.zip) and upload it under Settings, Capabilities, Skills. Then share your resume in a chat and ask for a graph. | No |
+| Gemini CLI | `gemini extensions install https://github.com/varunmoka7/resume-hypergraph` | No |
+| Tools with a skills folder | `sh scripts/pack-skill.sh`, then copy `dist/resume-graph` into the folder (`~/.codex/skills/` for Codex, `~/.agents/skills/` is common). | No |
+| No AI tool | Write `profile.json` by hand (format: `skills/resume-graph/PROFILE-FORMAT.md`) and run `node scripts/profile.mjs build my-profile.json index.html` | Yes |
 
 ## How it works
 
@@ -122,7 +126,8 @@ In Claude Code every step is also available on its own, for redoing part of a gr
 
 ## Development
 
-Requires Node 18 or later. There are no dependencies to install.
+Requires Node.js. It was written and tested on Node 26; older versions have not been tried.
+There are no dependencies to install.
 
     python3 scripts/serve.py 8131      # preview at http://localhost:8131/view/
     node --test scripts/               # tests for the check and the build
@@ -145,8 +150,16 @@ made up.
 
 ## Status
 
-First release. It has run from start to finish in Claude Code and in Codex. The Claude web and
-Gemini CLI routes have not been tried yet.
+Early release. What has been run so far:
+
+- **Claude Code:** the two install commands above were run against GitHub, and the plugin was
+  run from start to finish, twice, on the made-up resume in `examples/`.
+- **Codex:** run from a clone of this repo on the same resume.
+- **The page:** checked in Chrome at four screen sizes, from phone to desktop.
+- **The scripts:** on Node 26, on macOS.
+
+Not tried yet: Claude on the web, Gemini CLI, Cursor, copying the skill into a skills folder,
+other browsers, other Node versions, Windows and Linux.
 
 Issues and pull requests are welcome. If the tool trips on your resume, describe the section
 that broke and leave private details out of the report.
