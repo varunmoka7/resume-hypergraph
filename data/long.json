@@ -1,0 +1,658 @@
+{
+ "name": "Dr. Maria Fernandez-Castillo",
+ "roleLine": "Epidemiologist and health-data lead with twenty-five years across regulators, hospitals and industry.",
+ "links": [
+  {
+   "label": "Email",
+   "url": "mailto:maria@example.com"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "work-0",
+   "group": "work",
+   "label": "World Health Organization Regional Office for Europe",
+   "kind": "Role 1 · 96 months",
+   "text": "Made-up entry for layout testing: World Health Organization Regional Office for Europe.",
+   "skills": [
+    "regulatory-affairs",
+    "project-management",
+    "mentoring",
+    "biostatistics"
+   ],
+   "months": 96
+  },
+  {
+   "id": "work-1",
+   "group": "work",
+   "label": "Bundesinstitut für Arzneimittel und Medizinprodukte",
+   "kind": "Role 2 · 40 months",
+   "text": "Made-up entry for layout testing: Bundesinstitut für Arzneimittel und Medizinprodukte.",
+   "skills": [
+    "survey-design",
+    "team-leadership"
+   ],
+   "months": 40
+  },
+  {
+   "id": "work-2",
+   "group": "work",
+   "label": "Novacura Pharma",
+   "kind": "Role 3 · 52 months",
+   "text": "Made-up entry for layout testing: Novacura Pharma.",
+   "skills": [
+    "scientific-writing",
+    "biostatistics",
+    "budgeting",
+    "python"
+   ],
+   "months": 52
+  },
+  {
+   "id": "work-3",
+   "group": "work",
+   "label": "Charité Universitätsmedizin",
+   "kind": "Role 4 · 30 months",
+   "text": "Made-up entry for layout testing: Charité Universitätsmedizin.",
+   "skills": [
+    "grant-writing",
+    "data-governance"
+   ],
+   "months": 30
+  },
+  {
+   "id": "work-4",
+   "group": "work",
+   "label": "Medisight Analytics",
+   "kind": "Role 5 · 22 months",
+   "text": "Made-up entry for layout testing: Medisight Analytics.",
+   "skills": [
+    "grant-writing",
+    "r",
+    "survey-design",
+    "data-governance",
+    "biostatistics"
+   ],
+   "months": 22
+  },
+  {
+   "id": "work-5",
+   "group": "work",
+   "label": "Hospital Clínic de Barcelona",
+   "kind": "Role 6 · 48 months",
+   "text": "Made-up entry for layout testing: Hospital Clínic de Barcelona.",
+   "skills": [
+    "team-leadership",
+    "r",
+    "mentoring",
+    "trial-design",
+    "scientific-writing",
+    "biostatistics"
+   ],
+   "months": 48
+  },
+  {
+   "id": "work-6",
+   "group": "work",
+   "label": "Instituto de Salud Global",
+   "kind": "Role 7 · 18 months",
+   "text": "Made-up entry for layout testing: Instituto de Salud Global.",
+   "skills": [
+    "scientific-writing",
+    "project-management",
+    "biostatistics",
+    "r",
+    "trial-design",
+    "survey-design"
+   ],
+   "months": 18
+  },
+  {
+   "id": "work-7",
+   "group": "work",
+   "label": "Pfennig & Sohn Consulting",
+   "kind": "Role 8 · 14 months",
+   "text": "Made-up entry for layout testing: Pfennig & Sohn Consulting.",
+   "skills": [
+    "epidemiology",
+    "data-governance",
+    "regulatory-affairs"
+   ],
+   "months": 14
+  },
+  {
+   "id": "work-8",
+   "group": "work",
+   "label": "Healthbridge",
+   "kind": "Role 9 · 9 months",
+   "text": "Made-up entry for layout testing: Healthbridge.",
+   "skills": [
+    "team-leadership",
+    "scientific-writing",
+    "epidemiology",
+    "survey-design",
+    "health-economics",
+    "portuguese"
+   ],
+   "months": 9
+  },
+  {
+   "id": "work-9",
+   "group": "work",
+   "label": "Lumen Diagnostics",
+   "kind": "Role 10 · 26 months",
+   "text": "Made-up entry for layout testing: Lumen Diagnostics.",
+   "skills": [
+    "scientific-writing",
+    "mentoring",
+    "python",
+    "peer-review",
+    "team-leadership",
+    "survey-design"
+   ],
+   "months": 26
+  },
+  {
+   "id": "work-10",
+   "group": "work",
+   "label": "Clinica Vida",
+   "kind": "Role 11 · 12 months",
+   "text": "Made-up entry for layout testing: Clinica Vida.",
+   "skills": [
+    "scientific-writing",
+    "biostatistics"
+   ],
+   "months": 12
+  },
+  {
+   "id": "work-11",
+   "group": "work",
+   "label": "Statens Serum Institut",
+   "kind": "Role 12 · 20 months",
+   "text": "Made-up entry for layout testing: Statens Serum Institut.",
+   "skills": [
+    "python",
+    "public-speaking",
+    "trial-design",
+    "survey-design",
+    "data-governance",
+    "teaching"
+   ],
+   "months": 20
+  },
+  {
+   "id": "education-0",
+   "group": "education",
+   "label": "Universidad de Barcelona",
+   "kind": "Degree",
+   "text": "Made-up entry for layout testing: Universidad de Barcelona.",
+   "skills": [
+    "scientific-writing",
+    "stakeholder-management",
+    "peer-review",
+    "epidemiology",
+    "r"
+   ]
+  },
+  {
+   "id": "education-1",
+   "group": "education",
+   "label": "London School of Hygiene and Tropical Medicine",
+   "kind": "Degree",
+   "text": "Made-up entry for layout testing: London School of Hygiene and Tropical Medicine.",
+   "skills": [
+    "spanish",
+    "r",
+    "grant-writing"
+   ]
+  },
+  {
+   "id": "education-2",
+   "group": "education",
+   "label": "Karolinska Institutet",
+   "kind": "Degree",
+   "text": "Made-up entry for layout testing: Karolinska Institutet.",
+   "skills": [
+    "epidemiology",
+    "budgeting",
+    "public-speaking",
+    "teaching",
+    "stakeholder-management",
+    "portuguese"
+   ]
+  },
+  {
+   "id": "education-3",
+   "group": "education",
+   "label": "Harvard Extension School",
+   "kind": "Degree",
+   "text": "Made-up entry for layout testing: Harvard Extension School.",
+   "skills": [
+    "grant-writing",
+    "team-leadership",
+    "budgeting",
+    "data-governance",
+    "health-economics",
+    "teaching"
+   ]
+  },
+  {
+   "id": "projects-0",
+   "group": "projects",
+   "label": "Open trial registry",
+   "kind": "Project",
+   "text": "Made-up entry for layout testing: Open trial registry.",
+   "skills": [
+    "public-speaking",
+    "data-governance",
+    "biostatistics"
+   ]
+  },
+  {
+   "id": "projects-1",
+   "group": "projects",
+   "label": "Vaccine uptake dashboard",
+   "kind": "Project",
+   "text": "Made-up entry for layout testing: Vaccine uptake dashboard.",
+   "skills": [
+    "survey-design",
+    "scientific-writing"
+   ]
+  },
+  {
+   "id": "projects-2",
+   "group": "projects",
+   "label": "Rural clinic survey",
+   "kind": "Project",
+   "text": "Made-up entry for layout testing: Rural clinic survey.",
+   "skills": [
+    "teaching",
+    "spanish",
+    "peer-review",
+    "health-policy"
+   ]
+  },
+  {
+   "id": "projects-3",
+   "group": "projects",
+   "label": "Health data standards working group",
+   "kind": "Project",
+   "text": "Made-up entry for layout testing: Health data standards working group.",
+   "skills": [
+    "scientific-writing",
+    "stakeholder-management",
+    "grant-writing",
+    "machine-learning",
+    "public-speaking"
+   ]
+  },
+  {
+   "id": "projects-4",
+   "group": "projects",
+   "label": "Textbook chapter",
+   "kind": "Project",
+   "text": "Made-up entry for layout testing: Textbook chapter.",
+   "skills": [
+    "biostatistics",
+    "portuguese"
+   ]
+  },
+  {
+   "id": "projects-5",
+   "group": "projects",
+   "label": "Podcast",
+   "kind": "Project",
+   "text": "Made-up entry for layout testing: Podcast.",
+   "skills": [
+    "mentoring",
+    "scientific-writing",
+    "trial-design",
+    "stakeholder-management"
+   ]
+  },
+  {
+   "id": "venture-0",
+   "group": "venture",
+   "label": "Fernandez Health Advisory",
+   "kind": "Founder · since 2021",
+   "text": "Made-up entry for layout testing: Fernandez Health Advisory.",
+   "skills": [
+    "spanish",
+    "project-management",
+    "trial-design",
+    "peer-review"
+   ],
+   "months": 50
+  },
+  {
+   "id": "parttime-0",
+   "group": "parttime",
+   "label": "Guest lecturer",
+   "kind": "Part-time",
+   "text": "Made-up entry for layout testing: Guest lecturer.",
+   "skills": [
+    "stakeholder-management",
+    "peer-review"
+   ]
+  },
+  {
+   "id": "parttime-1",
+   "group": "parttime",
+   "label": "Journal editor",
+   "kind": "Part-time",
+   "text": "Made-up entry for layout testing: Journal editor.",
+   "skills": [
+    "health-policy",
+    "team-leadership",
+    "public-speaking"
+   ]
+  },
+  {
+   "id": "parttime-2",
+   "group": "parttime",
+   "label": "Board member",
+   "kind": "Part-time",
+   "text": "Made-up entry for layout testing: Board member.",
+   "skills": [
+    "python",
+    "epidemiology"
+   ]
+  },
+  {
+   "id": "personal-0",
+   "group": "personal",
+   "label": "Sailing",
+   "kind": "Hobby",
+   "text": "Sailing",
+   "skills": []
+  },
+  {
+   "id": "personal-1",
+   "group": "personal",
+   "label": "Choir",
+   "kind": "Hobby",
+   "text": "Choir",
+   "skills": []
+  },
+  {
+   "id": "personal-2",
+   "group": "personal",
+   "label": "Marathon running",
+   "kind": "Hobby",
+   "text": "Marathon running",
+   "skills": []
+  }
+ ],
+ "skills": [
+  {
+   "id": "clinical-research",
+   "label": "Clinical research",
+   "intro": "Clinical research.",
+   "uses": {}
+  },
+  {
+   "id": "biostatistics",
+   "label": "Biostatistics",
+   "intro": "Biostatistics.",
+   "uses": {
+    "work-0": "Used at World Health Organization Regional Office for Europe.",
+    "work-2": "Used at Novacura Pharma.",
+    "work-4": "Used at Medisight Analytics.",
+    "work-5": "Used at Hospital Clínic de Barcelona.",
+    "work-6": "Used at Instituto de Salud Global.",
+    "work-10": "Used at Clinica Vida.",
+    "projects-0": "Used at Open trial registry.",
+    "projects-4": "Used at Textbook chapter."
+   }
+  },
+  {
+   "id": "grant-writing",
+   "label": "Grant writing",
+   "intro": "Grant writing.",
+   "uses": {
+    "work-3": "Used at Charité Universitätsmedizin.",
+    "work-4": "Used at Medisight Analytics.",
+    "education-1": "Used at London School of Hygiene and Tropical Medicine.",
+    "education-3": "Used at Harvard Extension School.",
+    "projects-3": "Used at Health data standards working group."
+   }
+  },
+  {
+   "id": "team-leadership",
+   "label": "Team leadership",
+   "intro": "Team leadership.",
+   "uses": {
+    "work-1": "Used at Bundesinstitut für Arzneimittel und Medizinprodukte.",
+    "work-5": "Used at Hospital Clínic de Barcelona.",
+    "work-8": "Used at Healthbridge.",
+    "work-9": "Used at Lumen Diagnostics.",
+    "education-3": "Used at Harvard Extension School.",
+    "parttime-1": "Used at Journal editor."
+   }
+  },
+  {
+   "id": "regulatory-affairs",
+   "label": "Regulatory affairs",
+   "intro": "Regulatory affairs.",
+   "uses": {
+    "work-0": "Used at World Health Organization Regional Office for Europe.",
+    "work-7": "Used at Pfennig & Sohn Consulting."
+   }
+  },
+  {
+   "id": "health-economics",
+   "label": "Health economics",
+   "intro": "Health economics.",
+   "uses": {
+    "work-8": "Used at Healthbridge.",
+    "education-3": "Used at Harvard Extension School."
+   }
+  },
+  {
+   "id": "python",
+   "label": "Python",
+   "intro": "Python.",
+   "uses": {
+    "work-2": "Used at Novacura Pharma.",
+    "work-9": "Used at Lumen Diagnostics.",
+    "work-11": "Used at Statens Serum Institut.",
+    "parttime-2": "Used at Board member."
+   }
+  },
+  {
+   "id": "r",
+   "label": "R",
+   "intro": "R.",
+   "uses": {
+    "work-4": "Used at Medisight Analytics.",
+    "work-5": "Used at Hospital Clínic de Barcelona.",
+    "work-6": "Used at Instituto de Salud Global.",
+    "education-0": "Used at Universidad de Barcelona.",
+    "education-1": "Used at London School of Hygiene and Tropical Medicine."
+   }
+  },
+  {
+   "id": "machine-learning",
+   "label": "Machine learning",
+   "intro": "Machine learning.",
+   "uses": {
+    "projects-3": "Used at Health data standards working group."
+   }
+  },
+  {
+   "id": "epidemiology",
+   "label": "Epidemiology",
+   "intro": "Epidemiology.",
+   "uses": {
+    "work-7": "Used at Pfennig & Sohn Consulting.",
+    "work-8": "Used at Healthbridge.",
+    "education-0": "Used at Universidad de Barcelona.",
+    "education-2": "Used at Karolinska Institutet.",
+    "parttime-2": "Used at Board member."
+   }
+  },
+  {
+   "id": "teaching",
+   "label": "Teaching",
+   "intro": "Teaching.",
+   "uses": {
+    "work-11": "Used at Statens Serum Institut.",
+    "education-2": "Used at Karolinska Institutet.",
+    "education-3": "Used at Harvard Extension School.",
+    "projects-2": "Used at Rural clinic survey."
+   }
+  },
+  {
+   "id": "peer-review",
+   "label": "Peer review",
+   "intro": "Peer review.",
+   "uses": {
+    "work-9": "Used at Lumen Diagnostics.",
+    "education-0": "Used at Universidad de Barcelona.",
+    "projects-2": "Used at Rural clinic survey.",
+    "venture-0": "Used at Fernandez Health Advisory.",
+    "parttime-0": "Used at Guest lecturer."
+   }
+  },
+  {
+   "id": "project-management",
+   "label": "Project management",
+   "intro": "Project management.",
+   "uses": {
+    "work-0": "Used at World Health Organization Regional Office for Europe.",
+    "work-6": "Used at Instituto de Salud Global.",
+    "venture-0": "Used at Fernandez Health Advisory."
+   }
+  },
+  {
+   "id": "data-governance",
+   "label": "Data governance",
+   "intro": "Data governance.",
+   "uses": {
+    "work-3": "Used at Charité Universitätsmedizin.",
+    "work-4": "Used at Medisight Analytics.",
+    "work-7": "Used at Pfennig & Sohn Consulting.",
+    "work-11": "Used at Statens Serum Institut.",
+    "education-3": "Used at Harvard Extension School.",
+    "projects-0": "Used at Open trial registry."
+   }
+  },
+  {
+   "id": "stakeholder-management",
+   "label": "Stakeholder management",
+   "intro": "Stakeholder management.",
+   "uses": {
+    "education-0": "Used at Universidad de Barcelona.",
+    "education-2": "Used at Karolinska Institutet.",
+    "projects-3": "Used at Health data standards working group.",
+    "projects-5": "Used at Podcast.",
+    "parttime-0": "Used at Guest lecturer."
+   }
+  },
+  {
+   "id": "public-speaking",
+   "label": "Public speaking",
+   "intro": "Public speaking.",
+   "uses": {
+    "work-11": "Used at Statens Serum Institut.",
+    "education-2": "Used at Karolinska Institutet.",
+    "projects-0": "Used at Open trial registry.",
+    "projects-3": "Used at Health data standards working group.",
+    "parttime-1": "Used at Journal editor."
+   }
+  },
+  {
+   "id": "budgeting",
+   "label": "Budgeting",
+   "intro": "Budgeting.",
+   "uses": {
+    "work-2": "Used at Novacura Pharma.",
+    "education-2": "Used at Karolinska Institutet.",
+    "education-3": "Used at Harvard Extension School."
+   }
+  },
+  {
+   "id": "survey-design",
+   "label": "Survey design",
+   "intro": "Survey design.",
+   "uses": {
+    "work-1": "Used at Bundesinstitut für Arzneimittel und Medizinprodukte.",
+    "work-4": "Used at Medisight Analytics.",
+    "work-6": "Used at Instituto de Salud Global.",
+    "work-8": "Used at Healthbridge.",
+    "work-9": "Used at Lumen Diagnostics.",
+    "work-11": "Used at Statens Serum Institut.",
+    "projects-1": "Used at Vaccine uptake dashboard."
+   }
+  },
+  {
+   "id": "scientific-writing",
+   "label": "Scientific writing",
+   "intro": "Scientific writing.",
+   "uses": {
+    "work-2": "Used at Novacura Pharma.",
+    "work-5": "Used at Hospital Clínic de Barcelona.",
+    "work-6": "Used at Instituto de Salud Global.",
+    "work-8": "Used at Healthbridge.",
+    "work-9": "Used at Lumen Diagnostics.",
+    "work-10": "Used at Clinica Vida.",
+    "education-0": "Used at Universidad de Barcelona.",
+    "projects-1": "Used at Vaccine uptake dashboard.",
+    "projects-3": "Used at Health data standards working group.",
+    "projects-5": "Used at Podcast."
+   }
+  },
+  {
+   "id": "health-policy",
+   "label": "Health policy",
+   "intro": "Health policy.",
+   "uses": {
+    "projects-2": "Used at Rural clinic survey.",
+    "parttime-1": "Used at Journal editor."
+   }
+  },
+  {
+   "id": "mentoring",
+   "label": "Mentoring",
+   "intro": "Mentoring.",
+   "uses": {
+    "work-0": "Used at World Health Organization Regional Office for Europe.",
+    "work-5": "Used at Hospital Clínic de Barcelona.",
+    "work-9": "Used at Lumen Diagnostics.",
+    "projects-5": "Used at Podcast."
+   }
+  },
+  {
+   "id": "trial-design",
+   "label": "Trial design",
+   "intro": "Trial design.",
+   "uses": {
+    "work-5": "Used at Hospital Clínic de Barcelona.",
+    "work-6": "Used at Instituto de Salud Global.",
+    "work-11": "Used at Statens Serum Institut.",
+    "projects-5": "Used at Podcast.",
+    "venture-0": "Used at Fernandez Health Advisory."
+   }
+  },
+  {
+   "id": "spanish",
+   "label": "Spanish",
+   "intro": "Spanish.",
+   "uses": {
+    "education-1": "Used at London School of Hygiene and Tropical Medicine.",
+    "projects-2": "Used at Rural clinic survey.",
+    "venture-0": "Used at Fernandez Health Advisory."
+   }
+  },
+  {
+   "id": "portuguese",
+   "label": "Portuguese",
+   "intro": "Portuguese.",
+   "uses": {
+    "work-8": "Used at Healthbridge.",
+    "education-2": "Used at Karolinska Institutet.",
+    "projects-4": "Used at Textbook chapter."
+   }
+  }
+ ]
+}

@@ -1,0 +1,234 @@
+:root {
+  --bg: #0E1110;
+  --surface: #161B19;
+  --text: #ECEFEC;
+  --muted: #9AA39E;
+  --faint: #6B736F;
+  --moss: #7BC47F;
+  --moss-dim: #4E7F52;
+  --sans: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --gutter: 32px;
+  --hover: 120ms linear;
+  --slide: 600ms cubic-bezier(.45, 0, .25, 1); /* power2.inOut */
+  --portrait: 192px;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { background: var(--bg); color-scheme: dark; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 400 17px/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, p, ul, ol, dl, figure { margin: 0; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--moss); outline-offset: 2px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip-link { position: fixed; left: var(--gutter); top: 12px; z-index: 10; transform: translateY(-200%); background: var(--moss); color: var(--bg); padding: 8px 12px; }
+.skip-link:focus-visible { transform: none; }
+.meta { font: 400 13px/1.5 var(--mono); color: var(--muted); }
+.ext { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-left: 2px; }
+
+/* 1. Landing: the photo (or initials), large, in the centre; name and role line under it */
+.landing {
+  position: relative; min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 64px var(--gutter);
+}
+.portrait {
+  width: var(--portrait); height: var(--portrait); padding: 0; border: 0; background: none;
+  border-radius: 50%; cursor: pointer; position: relative;
+  outline: 2px solid var(--moss); outline-offset: 4px;
+}
+.portrait:focus-visible { outline-width: 3px; }
+.portrait img {
+  display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+  filter: grayscale(1) sepia(.12); transition: filter 400ms linear;
+}
+.portrait:hover img, .portrait:focus-visible img { filter: none; }
+.portrait .initials {
+  display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%;
+  background: var(--surface); font: 600 64px/1 var(--sans); letter-spacing: .02em;
+}
+h1 { font: 600 40px/1.1 var(--sans); margin-top: 32px; }
+.role-line { font: 400 20px/1.4 var(--sans); margin-top: 12px; max-width: 34ch; }
+.cue { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } /* read out, not shown: the ring says "click" */
+.portrait::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid var(--moss); animation: ring 2.4s ease-out infinite; pointer-events: none; }
+.portrait:hover::after, .portrait:focus-visible::after, .graph-on .portrait::after { animation: none; opacity: 0; }
+@keyframes ring { from { transform: scale(1); opacity: .7; } to { transform: scale(1.18); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .portrait::after { animation: none; opacity: 0; } }
+.reveal .next { max-width: 52ch; color: var(--text); }
+.reveal .next:empty { display: none; }
+
+/* 2. The reveal: CV and links */
+.reveal { margin-top: 24px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 24px; }
+.js .reveal { opacity: 0; transform: translateY(8px); visibility: hidden; transition: opacity 400ms linear, transform 400ms ease-out, visibility 0s 400ms; }
+.js .revealed .reveal { opacity: 1; transform: none; visibility: visible; transition: opacity 400ms linear, transform 400ms ease-out; }
+.js .revealed .cue { visibility: hidden; }
+html:not(.js) .cue { display: none; }
+
+.links { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 16px; font-size: 15px; }
+.links a {
+  display: inline-block; padding: 4px 0;
+  text-decoration: underline; text-decoration-color: var(--faint);
+  text-decoration-thickness: 1px; text-underline-offset: 4px;
+  transition: text-decoration-color var(--hover);
+}
+.links a:hover { text-decoration-color: var(--moss); }
+.cv {
+  display: inline-block; font: 400 13px/1.5 var(--mono); color: var(--moss);
+  border: 1px solid var(--moss); border-radius: 4px; padding: 8px 16px; text-decoration: none;
+  transition: background var(--hover), color var(--hover);
+}
+.cv:hover, .cv:focus-visible { background: var(--moss); color: var(--bg); }
+
+/* 3. The graph takes the whole screen */
+.scene { position: relative; height: 100vh; height: 100dvh; }
+.stage {
+  position: sticky; top: 0; height: 100vh; height: 100dvh; overflow: hidden;
+  background:
+    radial-gradient(50% 45% at 50% 42%, #12201A 0%, rgba(18, 32, 26, 0) 100%),
+    radial-gradient(30% 30% at 70% 68%, rgba(78, 127, 82, .08) 0%, rgba(78, 127, 82, 0) 100%);
+}
+.stage .ground { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 2s linear; }
+.stage .ground.on { opacity: 1; }
+.stage svg { position: absolute; inset: 0; width: 100%; height: 100%; transition: transform var(--slide); transform-origin: 0 0; }
+svg text { font-family: var(--mono); font-size: 12px; fill: var(--muted); }
+svg .photo-img { filter: grayscale(1) sepia(.12); }
+svg .photo-initials { font: 600 26px/1 var(--sans); fill: var(--text); }
+
+.net .nl { stroke: var(--faint); stroke-opacity: .45; }
+.net .nl.skill { stroke-dasharray: 2 4; stroke-opacity: 0; }
+.net .nl.on { stroke: var(--moss); stroke-opacity: .9; }
+.net .nl.dim { stroke-opacity: .06; }
+.net .nl.skill.dim { stroke-opacity: 0; }
+.net .nn { cursor: pointer; outline: none; transition: opacity 120ms linear; }
+.net .nn text { fill: var(--muted); font: 12px/1 var(--mono); pointer-events: none; }
+.net .nn.skill text { pointer-events: auto; cursor: pointer; }
+.net .nn.exp text { fill: var(--text); font: 600 14px/1 var(--sans); }
+.net .nn.skill circle, .net .skill-dot { fill: var(--moss-dim); }
+.net .nn.dim { opacity: .18; }
+.net .nn.on text, .net .nn.current text { fill: var(--moss); }
+.net .nn:focus-visible text { text-decoration: underline; }
+.net .band { opacity: .16; }
+.net .band line { stroke: var(--moss); stroke-width: 30; stroke-linecap: round; }
+.net .band circle { fill: var(--moss); }
+.net .net-area { fill: var(--faint); font: 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.net .net-legend text { fill: var(--muted); font: 12px var(--mono); }
+.net .net-theme { fill: var(--moss); fill-opacity: .035; stroke: var(--faint); stroke-opacity: .5; stroke-dasharray: 3 5; }
+.net .unfolding .nn { transition: none; }
+
+/* 4. Click a node or a skill: the graph moves left, the panel opens on the right */
+.panel {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 5;
+  width: min(46vw, 640px); overflow-y: auto; overscroll-behavior: contain;
+  background: var(--bg); border-left: 1px solid var(--faint);
+  padding: 72px 48px 64px; transform: translateX(100%); transition: transform var(--slide), visibility 0s var(--slide);
+  visibility: hidden;
+}
+.panel-open .panel { transform: none; visibility: visible; transition: transform var(--slide); }
+.panel-open .net-area, .panel-open .net-legend { opacity: 0; }
+.panel-close {
+  position: absolute; top: 20px; right: 24px; background: none; border: 0; cursor: pointer;
+  font: 400 13px/1.5 var(--mono); color: var(--muted); padding: 12px 8px;
+  text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: 4px;
+}
+.panel-close:hover { color: var(--moss); }
+.panel h2 { font: 600 24px/1.25 var(--sans); margin-top: 8px; }
+.panel p, .panel li { max-width: 68ch; }
+.panel .intro { margin-top: 16px; }
+.panel ul.items { padding-left: 18px; margin-top: 8px; }
+.panel ul.items li { margin-top: 8px; }
+.panel ul.items li::marker { color: var(--faint); }
+.panel .theme-roles, .mlist ul { list-style: none; padding: 0; margin-top: 16px; }
+.panel .theme-roles li { margin-top: 24px; }
+.panel .theme-roles button, .mlist button {
+  background: none; border: 0; padding: 4px 0; cursor: pointer; font: 400 17px/1.4 var(--sans); text-align: left;
+  text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: 4px;
+}
+.panel .theme-roles button:hover, .mlist button:hover { text-decoration-color: var(--moss); }
+.tags { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 16px; }
+.tag {
+  font: 400 14px/1.4 var(--mono); color: var(--muted); background: none; border: 0; cursor: pointer;
+  padding: 8px 0; text-decoration: underline; text-decoration-color: var(--faint);
+  text-decoration-thickness: 1px; text-underline-offset: 4px; transition: color var(--hover);
+}
+.tag:hover, .tag:focus-visible { color: var(--moss); text-decoration-color: var(--moss); }
+.panel-head { display: flex; align-items: center; gap: 14px; margin-top: 8px; }
+.panel-head h2 { margin-top: 0; }
+.panel-logo { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; background: #fff; }
+.panel .summary, .panel .about { margin-top: 16px; }
+.panel h4.sub { font: 600 17px/1.6 var(--sans); margin-top: 24px; }
+.panel .uses .use { margin-top: 4px; }
+.panel h3.part, .mlist h2 { font: 400 14px/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: 32px; padding-bottom: 8px; border-bottom: 1px solid var(--faint); }
+.profile { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 8px 16px; margin-top: 16px; }
+.profile dt { font: 400 14px/1.6 var(--mono); color: var(--muted); }
+.profile dd { margin: 0; overflow-wrap: anywhere; }
+
+/* 5. End: a short contact block (phones only; desktop keeps the links in the top line) */
+.contact { max-width: 1200px; margin: 0 auto; padding: 96px var(--gutter); text-align: center; }
+.contact h2 { font: 600 24px/1.25 var(--sans); }
+.contact .links { margin-top: 16px; }
+
+/* Desktop, with script: the landing and the graph share one screen. The photo click fades the
+   landing and glides the photo into the graph; the page itself does not scroll. */
+.topline { display: none; }
+@media (min-width: 720px) {
+  html.js, html.js body { overflow: hidden; height: 100%; }
+  .js .landing { height: 100vh; height: 100dvh; }
+  .js .landing > :not(.portrait) { transition: opacity 300ms linear; }
+  .js .graph-on .landing > :not(.portrait) { opacity: 0; pointer-events: none; }
+  .js .portrait { position: relative; z-index: 3; will-change: transform; }
+  .js .scene { position: fixed; inset: 0; height: auto; z-index: 2; opacity: 0; visibility: hidden; transition: opacity 400ms linear, visibility 0s 400ms; }
+  .js .graph-on .scene { opacity: 1; visibility: visible; transition: opacity 400ms linear; }
+  .js .stage { position: absolute; inset: 0; height: auto; outline: none; }
+  .js .contact { display: none; }
+  .js .topline {
+    display: flex; align-items: center; gap: 16px 24px; flex-wrap: wrap;
+    position: absolute; top: 20px; left: var(--gutter); right: var(--gutter); z-index: 3;
+  }
+  .topline-name { font: 600 17px/1.3 var(--sans); }
+  .topline .links { justify-content: flex-start; font-size: 14px; }
+  .topline .cv { padding: 4px 12px; }
+  .js .graph-on .photo-node { cursor: pointer; outline: none; }
+  .js .graph-on .portrait img { filter: grayscale(1) sepia(.12); } /* hover colour belongs to the landing only */
+  .js .revealed .cue { visibility: visible; } /* desktop keeps the cue: the click opens the graph */
+  .js .photo-node:focus-visible circle { stroke-width: 3; }
+}
+
+/* Phones: a plain list in place of the graph; the panel slides up from the bottom */
+@media (max-width: 719px) {
+  :root { --gutter: 16px; --portrait: 152px; }
+  body { font-size: 16px; }
+  h1 { font-size: 32px; margin-top: 24px; }
+  .role-line { font-size: 18px; }
+  .portrait .initials { font-size: 48px; }
+  .scene, .stage { height: auto; }
+  .stage { position: static; overflow: visible; }
+  .mlist { padding: 0 var(--gutter) 32px; }
+  .mlist li { margin-top: 16px; }
+  .mlist button { padding: 12px 0 0; }
+  .panel {
+    top: auto; left: 0; width: auto; max-height: 78vh; border-left: 0; border-top: 1px solid var(--faint);
+    padding: 56px 16px 48px; transform: translateY(100%);
+  }
+  .panel-close { top: 8px; right: 8px; }
+  .panel h2, .contact h2 { font-size: 20px; }
+  .links a { padding: 12px 0; }
+  .tag { padding: 15px 0; }
+}
+
+@media (min-width: 720px) and (max-width: 1100px) {
+  .net-legend { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage .ground, .stage svg, .panel, .panel-open .panel, .js .reveal, .js .revealed .reveal, .portrait img { transition: none; }
+}

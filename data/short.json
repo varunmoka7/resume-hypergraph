@@ -1,0 +1,41 @@
+{
+  "name": "Lena Hoffmann",
+  "roleLine": "Final-year economics student looking for a first analyst role.",
+  "links": [
+    { "label": "Email", "url": "mailto:lena@example.com" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/example" }
+  ],
+  "nodes": [
+    {
+      "id": "bsc", "group": "education", "label": "University of Leipzig",
+      "kind": "BSc Economics · 2023 to 2026",
+      "text": "Bachelor's degree in economics with a focus on statistics and public finance.",
+      "role": "BSc Economics", "period": "2023 to 2026",
+      "skills": ["statistics", "writing"]
+    },
+    {
+      "id": "stadtwerke", "group": "work", "label": "Stadtwerke Leipzig",
+      "kind": "Intern, controlling · Feb 2025 to Jul 2025", "months": 6,
+      "text": "Six-month internship in the controlling team of the city utility.",
+      "role": "Intern, controlling", "period": "Feb 2025 to Jul 2025", "location": "Leipzig",
+      "sections": [{ "title": "Monthly reporting", "items": ["Rebuilt the monthly cost report in a spreadsheet model that the team still uses."] }],
+      "skills": ["excel", "statistics"]
+    },
+    {
+      "id": "thesis", "group": "projects", "label": "Bachelor thesis",
+      "kind": "Project · 2026",
+      "text": "Estimated how a local transit subsidy changed ridership, using public timetable and ticket data.",
+      "skills": ["statistics", "r", "writing"]
+    }
+  ],
+  "skills": [
+    { "id": "statistics", "label": "Statistics", "intro": "Describing data and testing whether a difference is real.",
+      "uses": { "bsc": "Two semesters of econometrics.", "stadtwerke": "Variance analysis on monthly costs.", "thesis": "Difference-in-differences on ridership data." } },
+    { "id": "excel", "label": "Excel", "intro": "Spreadsheet models and reports.",
+      "uses": { "stadtwerke": "Built the monthly cost report." } },
+    { "id": "r", "label": "R", "intro": "Statistical programming.",
+      "uses": { "thesis": "All estimation and charts for the thesis." } },
+    { "id": "writing", "label": "Writing", "intro": "Explaining a result to someone who was not in the room.",
+      "uses": { "bsc": "Seminar papers each semester.", "thesis": "A 40-page thesis." } }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "name": "Arjun Mehta",
+  "roleLine": "Product manager for logistics software.",
+  "next": "Looking for a senior product role at a company that moves physical goods.",
+  "links": [
+    { "label": "Email", "url": "mailto:arjun@example.com" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/example" },
+    { "label": "GitHub", "url": "https://github.com/example" }
+  ],
+  "nodes": [
+    {
+      "id": "parcelway", "group": "work", "label": "Parcelway",
+      "kind": "Senior Product Manager · Mar 2022 to today", "months": 55,
+      "text": "Owns the driver app and the routing service for a parcel carrier.",
+      "role": "Senior Product Manager", "period": "Mar 2022 to today", "location": "Hamburg",
+      "org": { "description": "Parcelway is a made-up parcel carrier used as sample data.", "about": "Logistics", "hq": "Hamburg, Germany", "url": "https://example.com" },
+      "sections": [
+        { "title": "Driver app", "items": ["Rewrote the stop-sequence screen after riding along on twelve routes.", "Cut failed first delivery attempts from 9% to 6%."] },
+        { "title": "Routing", "items": ["Moved route planning from nightly batches to planning on demand."] }
+      ],
+      "skills": ["product", "routing", "research", "sql"],
+      "technology": ["SQL", "Figma", "Amplitude"]
+    },
+    {
+      "id": "cartloop", "group": "work", "label": "Cartloop",
+      "kind": "Product Manager · Jan 2019 to Feb 2022", "months": 38,
+      "text": "Ran the checkout and returns products for an online grocery shop.",
+      "role": "Product Manager", "period": "Jan 2019 to Feb 2022", "location": "Berlin",
+      "skills": ["product", "experiments", "sql", "research"]
+    },
+    {
+      "id": "nordfracht", "group": "work", "label": "Nordfracht",
+      "kind": "Operations Analyst · Aug 2016 to Dec 2018", "months": 29,
+      "text": "Planned line-haul capacity for a regional freight forwarder.",
+      "role": "Operations Analyst", "period": "Aug 2016 to Dec 2018", "location": "Bremen",
+      "skills": ["operations", "sql", "routing"]
+    },
+    {
+      "id": "msc", "group": "education", "label": "TU Hamburg",
+      "kind": "MSc Logistics · 2014 to 2016",
+      "text": "Master's degree in logistics, thesis on vehicle routing with time windows.",
+      "role": "MSc Logistics", "period": "2014 to 2016",
+      "skills": ["routing", "operations"]
+    },
+    {
+      "id": "route-notes", "group": "projects", "label": "Route notes",
+      "kind": "Side project · 2023",
+      "text": "A small open tool that turns a driver's voice notes into address corrections.",
+      "skills": ["python", "research"]
+    },
+    {
+      "id": "meetup", "group": "projects", "label": "Logistics product meetup",
+      "kind": "Organiser · since 2021",
+      "text": "Runs a quarterly meetup for product people in logistics.",
+      "skills": ["community"]
+    },
+    { "id": "cycling", "group": "personal", "label": "Cycling", "kind": "Hobby", "text": "Long rides on weekends.", "skills": [] }
+  ],
+  "skills": [
+    { "id": "product", "label": "Product management", "intro": "Deciding what to build and checking that it worked.",
+      "uses": { "parcelway": "Owns the roadmap for the driver app and routing.", "cartloop": "Owned checkout and returns." } },
+    { "id": "routing", "label": "Route planning", "intro": "Putting stops in an order a driver can finish.",
+      "uses": { "parcelway": "Moved planning from nightly batches to on demand.", "nordfracht": "Planned line-haul capacity.", "msc": "Thesis on routing with time windows." } },
+    { "id": "research", "label": "User research", "intro": "Watching people do the work before changing it.",
+      "uses": { "parcelway": "Rode along on twelve routes.", "cartloop": "Weekly customer calls.", "route-notes": "Tested with five drivers." } },
+    { "id": "sql", "label": "SQL", "intro": "Asking the database directly.",
+      "uses": { "parcelway": "Delivery-attempt analysis.", "cartloop": "Checkout funnel queries.", "nordfracht": "Capacity reports." } },
+    { "id": "experiments", "label": "Experiments", "intro": "A/B tests with a clear stopping rule.",
+      "uses": { "cartloop": "Ran the checkout test programme." } },
+    { "id": "operations", "label": "Operations", "intro": "Keeping the physical side running.",
+      "uses": { "nordfracht": "Daily capacity planning.", "msc": "Coursework in warehouse and transport operations." } },
+    { "id": "python", "label": "Python", "intro": "Scripts and small tools.",
+      "uses": { "route-notes": "The whole tool." } },
+    { "id": "community", "label": "Community", "intro": "Bringing people in the field together.",
+      "uses": { "meetup": "Organises four events a year." } }
+  ]
+}
