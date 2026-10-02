@@ -137,7 +137,7 @@ made up.
 
 | Path | What |
 |---|---|
-| `view/` | The page: `index.html`, `graph.js`, `style.css`, the fonts, sample data |
+| `view/` | The page: `index.html`, `graph.js`, `style.css`, `fonts.css`, sample data |
 | `skills/` | The skill and its steps |
 | `agents/` | The two agents the skill starts: one profiles an entry, one checks the result |
 | `AGENTS.md` | Instructions for Codex, Gemini CLI and other agents |
@@ -166,5 +166,5 @@ that broke and leave private details out of the report.
 
 ## License
 
-MIT. The fonts are IBM Plex, under the SIL Open Font License (`view/fonts/OFL.txt`). Logos in a
+MIT. The fonts are IBM Plex, under the SIL Open Font License (`view/OFL.txt`). Logos in a
 built page belong to their organisations.
