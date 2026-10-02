@@ -29,4 +29,5 @@ test('private details are warned about; ordinary words are not', () => {
 test('the built page cannot be broken out of by the data', () => {
   const html = build({ name: 'A </script><script>alert(1)</script>', nodes: [node()], skills: [] }, view);
   assert.ok(!html.includes('</script><script>alert(1)'));
+  assert.ok(html.includes('<meta property="og:title" content="A &lt;/script&gt;'));
 });

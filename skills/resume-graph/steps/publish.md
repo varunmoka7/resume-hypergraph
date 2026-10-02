@@ -23,6 +23,7 @@ Tell the person:
 - The page is one file. Uploading it to any web host puts it online: their own site, GitHub Pages, Netlify, Vercel. To show it inside an existing page, an `<iframe>` pointing at it works.
 - `profile.json` is the source. To change anything, edit it (or ask you to) and build again.
 - Logos belong to their organisations. To drop one, delete that node's `logo` and build again.
+- The page has a small "Made with resume-hypergraph" link in the corner. To drop it, set `"credit": false` in `profile.json` and build again.
 - It is a public page once uploaded. They should read it once as a stranger would before they do.
 
 Do not upload or deploy it yourself unless they ask you to.

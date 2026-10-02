@@ -176,6 +176,10 @@ svg .photo-initials { font: 600 26px/1 var(--sans); fill: var(--text); }
 .contact { max-width: 1200px; margin: 0 auto; padding: 96px var(--gutter); text-align: center; }
 .contact h2 { font: 600 24px/1.25 var(--sans); }
 .contact .links { margin-top: 16px; }
+/* the credit: set "credit": false in the data file to drop it */
+.made { padding: 0 var(--gutter) 32px; text-align: center; font: 400 12px/1.5 var(--mono); color: var(--muted); }
+.made a { text-decoration-color: var(--faint); text-underline-offset: 4px; }
+.made a:hover { color: var(--moss); }
 
 /* Desktop, with script: the landing and the graph share one screen. The photo click fades the
    landing and glides the photo into the graph; the page itself does not scroll. */
@@ -190,6 +194,7 @@ svg .photo-initials { font: 600 26px/1 var(--sans); fill: var(--text); }
   .js .graph-on .scene { opacity: 1; visibility: visible; transition: opacity 400ms linear; }
   .js .stage { position: absolute; inset: 0; height: auto; outline: none; }
   .js .contact { display: none; }
+  .js .made { position: fixed; left: var(--gutter); bottom: 16px; z-index: 4; padding: 0; }
   .js .topline {
     display: flex; align-items: center; gap: 16px 24px; flex-wrap: wrap;
     position: absolute; top: 20px; left: var(--gutter); right: var(--gutter); z-index: 3;

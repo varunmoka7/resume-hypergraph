@@ -83,7 +83,7 @@ export function build(d, viewDir) {
   const swap = (html, from, to) => { if (!html.includes(from)) throw new Error(`view/index.html no longer contains ${from}`); return html.replace(from, () => to); };
   let html = read('index.html');
   html = swap(html, '<title>Profile</title>', `<title>${esc(d.name)}</title>`);
-  html = swap(html, '<meta name="description" content="">', `<meta name="description" content="${esc([d.name, d.roleLine].filter(Boolean).join(': '))}">`);
+  html = swap(html, '<meta name="description" content="">', `<meta name="description" content="${esc([d.name, d.roleLine].filter(Boolean).join(': '))}">\n<meta property="og:type" content="profile">\n<meta property="og:title" content="${esc(d.name)}">\n<meta property="og:description" content="${esc(d.roleLine || '')}">`); // what a shared link shows
   html = swap(html, '<link rel="stylesheet" href="style.css">', `<style>${read('style.css')}</style>`);
   return swap(html, '<script src="graph.js" defer></script>', `<script>window.PROFILE=${data}</script>\n<script>document.addEventListener('DOMContentLoaded',()=>{${read('graph.js')}})</script>`);
 }

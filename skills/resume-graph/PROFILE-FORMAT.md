@@ -38,6 +38,7 @@ One JSON file holds everything the page shows. The viewer (`view/graph.js`) read
 | `links` | no | `[{label, url}]`. Web or mail addresses only. Only the ones the person agreed to publish. |
 | `photo`, `cv` | no | A path under `assets/`, or for `photo` an embedded `data:image/...` picture. |
 | `groups` | no | `[{id, label}]`. Names a group that is not one of the standard ones, or renames a standard one. |
+| `credit` | no | `false` drops the small "Made with resume-hypergraph" link from the page. |
 | `nodes` | yes | What the person has done. |
 | `skills` | yes | The skills that connect the nodes. |
 

@@ -73,6 +73,7 @@
     btn.replaceChildren(photo ? h('img', { src: photo, alt: net.name, width: 300, height: 300 }) : h('span', { class: 'initials', text: initials() }));
     if (!photo) btn.setAttribute('aria-label', net.name);
     $('.langs').textContent = (net.languages || []).map(l => l.level ? `${l.label} (${l.level})` : l.label).join(' · ');
+    if (net.credit === false) $('.made').remove();
     const cv = safeUrl(net.cv);
     $$('[data-cv]').forEach(a => { a.hidden = !cv; if (cv) a.setAttribute('href', cv); });
     $$('.links').forEach(box => box.replaceChildren(...(net.links || []).filter(l => safeUrl(l.url)).map(l =>

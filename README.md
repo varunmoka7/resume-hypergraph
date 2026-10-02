@@ -7,6 +7,10 @@ one sentence saying what was done there with it.
 
 The result is one HTML file. Plain HTML, CSS and JavaScript, no build step, no libraries.
 
+![The graph of a made-up product manager with the skill "User research" open: a band joins the three places it was used, and the panel gives one sentence for each](docs/graph.png)
+
+The page carries a small "Made with resume-hypergraph" link in one corner; `"credit": false` in the data file removes it.
+
 See it live: [varunmoka.com](https://varunmoka.com), the site this tool grew out of. More
 examples with made-up people: https://resume-hypergraph.vercel.app
 
@@ -80,6 +84,7 @@ examples in `view/data/`) and build:
 | `scripts/profile.mjs` | Checks a data file and builds the one-file page |
 | `scripts/check-layout.py` | Loads every sample at four screen sizes, fails on overlapping labels |
 | `research/` | Notes on resume sections across professions and on existing resume formats |
+| `docs/` | The picture used in this README and in link previews |
 
 The graph folds long groups into a "+ N more" row and shows a plain list on phones.
 
