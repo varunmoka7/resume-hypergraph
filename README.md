@@ -11,12 +11,17 @@ Plain HTML, CSS and JavaScript. No build step.
 
     python3 scripts/serve.py 8131
 
-Then open http://localhost:8131/. `?p=short` and `?p=long` load the other samples in `data/`.
-All sample people and companies are made up.
+- http://localhost:8131/ is the upload page. It takes a resume (once the server part exists) or a
+  data file (`.json`, works today), shows the graph, lets you edit the data, and downloads the
+  result as one HTML file.
+- http://localhost:8131/view/ is the graph on its own. `?p=short` and `?p=long` load the other
+  samples in `view/data/`. All sample people and companies are made up.
+
+`view/` is the whole published page: `index.html`, `graph.js`, `style.css` and a data file.
 
 ## The data file
 
-One JSON file per person (`data/profile.json` is the default):
+One JSON file per person (`view/data/profile.json` is the default):
 
 | Field | What it is |
 |---|---|
@@ -44,4 +49,5 @@ Loads every sample at four desktop sizes and fails if labels overlap or leave th
 
 ## Not built yet
 
-Turning an uploaded resume into the data file, the upload page, and the download.
+The server part that reads an uploaded resume and writes the data file (`api/extract`).
+Until it exists, the upload page says so and still accepts a data file.

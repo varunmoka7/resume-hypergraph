@@ -3,14 +3,14 @@
 import os, time
 
 base = os.environ.get("SITE_CHECK_URL", "http://localhost:8131")
-new_tab(base + "/#work")
+new_tab(base + "/view/#work")
 cdp("Network.enable")
 cdp("Network.setCacheDisabled", cacheDisabled=True)
 cdp("Emulation.setEmulatedMedia", features=[{"name": "prefers-reduced-motion", "value": "reduce"}])
 for width, height in ((1024, 768), (1280, 720), (1440, 900), (1920, 1080)):
     cdp("Emulation.setDeviceMetricsOverride", width=width, height=height, deviceScaleFactor=1, mobile=False)
     for sample in ("short", "profile", "long"):
-        goto_url(f"{base}/?p={sample}&w={width}#work")
+        goto_url(f"{base}/view/?p={sample}&w={width}#work")
         wait_for_load()
         time.sleep(.7)
         r = js("""(() => {

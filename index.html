@@ -3,51 +3,214 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Profile</title>
-<meta name="description" content="">
+<title>Resume hypergraph</title>
+<meta name="description" content="Upload a resume and get one web page that shows your jobs, studies and projects, and the skills that connect them.">
 <meta name="theme-color" content="#0E1110">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;600&display=swap">
-<link rel="stylesheet" href="style.css">
-<script>document.documentElement.classList.add('js')</script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-<script src="graph.js" defer></script>
+<style>
+:root {
+  --bg: #0E1110; --surface: #161B19; --text: #ECEFEC; --muted: #9AA39E; --faint: #6B736F; --moss: #7BC47F; --warn: #E0A77A;
+  --sans: "IBM Plex Sans", system-ui, sans-serif; --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { background: var(--bg); color-scheme: dark; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 400 17px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+h1, h2, p, ul { margin: 0; }
+a { color: inherit; text-decoration-color: var(--faint); text-underline-offset: 4px; }
+a:hover { text-decoration-color: var(--moss); }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--moss); outline-offset: 2px; }
+.mono { font: 400 13px/1.5 var(--mono); color: var(--muted); }
+
+/* the upload screen */
+.start { max-width: 640px; margin: 0 auto; padding: 12vh 16px 64px; }
+h1 { font: 600 40px/1.1 var(--sans); }
+.lede { margin-top: 16px; font-size: 20px; line-height: 1.4; max-width: 32em; }
+.drop {
+  display: block; margin-top: 40px; padding: 40px 24px; text-align: center; cursor: pointer;
+  border: 1px dashed var(--faint); border-radius: 18px; background: rgba(123, 196, 127, .035);
+  transition: border-color 120ms linear, background 120ms linear;
+}
+.drop:hover, .drop.over, .drop:focus-within { border-color: var(--moss); background: rgba(123, 196, 127, .08); }
+.drop strong { display: block; font: 600 20px/1.3 var(--sans); }
+.drop .mono { display: block; margin-top: 8px; }
+.drop input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.files { list-style: none; padding: 0; margin-top: 16px; }
+.files li { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--surface); }
+.files span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.files button, .bar button, .bar a, .editor button { background: none; border: 0; padding: 8px 0; font: 400 13px/1.5 var(--mono); color: var(--muted); text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: 4px; }
+.files button:hover, .bar button:hover, .bar a:hover, .editor button:hover { color: var(--moss); }
+.go {
+  margin-top: 24px; padding: 12px 24px; border: 1px solid var(--moss); border-radius: 4px; background: var(--moss); color: var(--bg);
+  font: 600 17px/1.3 var(--sans);
+}
+.go:disabled { background: none; color: var(--faint); border-color: var(--faint); cursor: default; }
+.note { margin-top: 16px; }
+.note.bad { color: var(--warn); }
+.more { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--surface); display: grid; gap: 12px; }
+
+/* the result screen: a bar over the graph */
+.result { position: fixed; inset: 0; display: flex; flex-direction: column; }
+.bar { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; padding: 4px 16px; border-bottom: 1px solid var(--faint); background: var(--bg); }
+.bar .grow { flex: 1; }
+.bar button.main { color: var(--moss); }
+.result iframe { flex: 1; width: 100%; border: 0; background: var(--bg); }
+.editor { position: fixed; top: 0; right: 0; bottom: 0; width: min(560px, 100vw); z-index: 2; display: flex; flex-direction: column; gap: 8px; padding: 16px; background: var(--bg); border-left: 1px solid var(--faint); }
+.editor textarea { flex: 1; width: 100%; resize: none; padding: 12px; border: 1px solid var(--faint); border-radius: 4px; background: var(--surface); color: var(--text); font: 400 13px/1.5 var(--mono); }
+.editor div { display: flex; gap: 24px; align-items: center; }
+@media (max-width: 719px) { h1 { font-size: 32px; } .lede { font-size: 18px; } .start { padding-top: 48px; } }
+</style>
 </head>
 <body>
-<a class="skip-link" href="#work">Skip to work</a>
-<header class="landing" id="top">
-  <button type="button" class="portrait" id="portrait" aria-expanded="true" aria-controls="reveal"></button>
-  <h1 data-k="name"></h1>
-  <p class="role-line" data-k="roleLine"></p>
-  <p class="cue">Open the graph</p>
-  <div class="reveal" id="reveal">
-    <p class="next" data-k="next"></p>
-    <p class="meta langs"></p>
-    <div class="actions">
-      <a class="cv" data-cv hidden>CV</a>
-      <nav class="links" aria-label="Contact links"></nav>
-    </div>
+<main class="start" id="start">
+  <h1>Your resume as a graph</h1>
+  <p class="lede">Upload a resume. Get one web page that shows your jobs, studies and projects, and the skills that connect them, ready to put on your own site.</p>
+
+  <label class="drop" id="drop">
+    <input type="file" id="pick" multiple accept=".pdf,.docx,.txt,.md,.json,image/png,image/jpeg,image/webp">
+    <strong>Drop your resume here, or choose a file</strong>
+    <span class="mono">PDF, Word or text. Several versions are merged into one. Add a photo if you want one in the centre.</span>
+  </label>
+  <ul class="files" id="files"></ul>
+  <button type="button" class="go" id="go" disabled>Build my graph</button>
+  <p class="note mono" id="note" role="status"></p>
+
+  <div class="more">
+    <p>See one first: <a href="view/?p=short">a student</a>, <a href="view/">a product manager</a>, <a href="view/?p=long">a researcher with 95 entries</a>. The people are made up.</p>
+    <p class="mono">Your resume is sent to a language model to be read and is not kept afterwards. Phone numbers, street addresses and dates of birth are left out of the result. Nothing is published: you download the page and decide where it goes.</p>
+    <p class="mono">Open source. The page you download is plain HTML that you can edit.</p>
   </div>
-</header>
-<section class="scene" id="work" aria-label="Experience and skills">
-  <div class="stage" tabindex="-1">
-    <canvas class="ground" aria-hidden="true"></canvas>
-    <div class="topline">
-      <p class="topline-name" data-k="name"></p>
-      <a class="cv" data-cv hidden>CV</a>
-      <nav class="links" aria-label="Contact links"></nav>
-    </div>
-    <p class="sr-only" id="graph-alt"></p>
+</main>
+
+<section class="result" id="result" hidden>
+  <div class="bar">
+    <button type="button" id="again">Start over</button>
+    <span class="grow"></span>
+    <button type="button" id="edit">Edit the data</button>
+    <button type="button" id="save-data">Download the data</button>
+    <button type="button" class="main" id="save-page">Download the page</button>
+  </div>
+  <iframe id="frame" title="Your graph"></iframe>
+  <div class="editor" id="editor" hidden>
+    <textarea id="json" spellcheck="false" aria-label="The data behind the graph, as JSON"></textarea>
+    <div><button type="button" id="apply">Apply</button><button type="button" id="close-edit">Close</button><span class="mono note" id="edit-note" role="status"></span></div>
   </div>
 </section>
-<aside class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panel-title" hidden>
-  <button type="button" class="panel-close">Close</button>
-  <div class="panel-body"></div>
-</aside>
-<footer class="contact">
-  <h2>Contact</h2>
-  <nav class="links" aria-label="Contact links"></nav>
-</footer>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const KEY = 'resume-hypergraph', MAX_FILES = 6, MAX_BYTES = 8 * 1024 * 1024;
+  let files = [], profile = null;
+
+  const say = (text, bad) => { $('#note').textContent = text; $('#note').classList.toggle('bad', !!bad); };
+  const isImage = f => f.type.startsWith('image/');
+  function listFiles() {
+    $('#files').replaceChildren(...files.map((f, i) => {
+      const li = document.createElement('li'), name = document.createElement('span'), rm = document.createElement('button');
+      name.textContent = f.name + (isImage(f) ? ' (photo)' : '');
+      rm.type = 'button'; rm.textContent = 'Remove';
+      rm.addEventListener('click', () => { files.splice(i, 1); listFiles(); });
+      li.append(name, rm);
+      return li;
+    }));
+    $('#go').disabled = !files.some(f => !isImage(f));
+  }
+  function add(list) {
+    for (const f of list) {
+      if (files.length >= MAX_FILES) { say(`At most ${MAX_FILES} files.`, true); break; }
+      if (f.size > MAX_BYTES) { say(`${f.name} is larger than 8 MB.`, true); continue; }
+      files.push(f);
+    }
+    listFiles();
+  }
+  const drop = $('#drop');
+  $('#pick').addEventListener('change', e => { say(''); add(e.target.files); e.target.value = ''; });
+  ['dragenter', 'dragover'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove('over'); }));
+  drop.addEventListener('drop', e => { say(''); add(e.dataTransfer.files); });
+
+  // the photo is shrunk and stored inside the data, so the downloaded page stays one file
+  const photoOf = file => new Promise((done, fail) => {
+    const img = new Image();
+    img.onload = () => {
+      const side = Math.min(img.width, img.height), c = document.createElement('canvas');
+      c.width = c.height = 400;
+      c.getContext('2d').drawImage(img, (img.width - side) / 2, (img.height - side) / 2, side, side, 0, 0, 400, 400);
+      URL.revokeObjectURL(img.src);
+      done(c.toDataURL('image/jpeg', .85));
+    };
+    img.onerror = fail;
+    img.src = URL.createObjectURL(file);
+  });
+  const valid = d => d && typeof d.name === 'string' && d.name.trim() && Array.isArray(d.nodes) && d.nodes.length;
+
+  $('#go').addEventListener('click', async () => {
+    const docs = files.filter(f => !isImage(f)), photo = files.find(isImage);
+    $('#go').disabled = true;
+    try {
+      let data;
+      if (docs.length === 1 && docs[0].name.endsWith('.json')) data = JSON.parse(await docs[0].text()); // a data file made or edited by hand
+      else {
+        say('Reading your resume. This takes up to a minute.');
+        const body = new FormData();
+        docs.forEach(f => body.append('resume', f));
+        const res = await fetch('api/extract', { method: 'POST', body });
+        if (res.status === 404 || res.status === 405 || res.status === 501) throw new Error('Reading resumes needs the server part of this tool, which is not running here. You can still load a data file (.json) or open an example.');
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(out.error || 'The resume could not be read. Try again, or try a different file.');
+        data = out.profile;
+      }
+      if (!valid(data)) throw new Error('That file has no name or no entries, so there is nothing to draw.');
+      if (photo) data.photo = await photoOf(photo);
+      say('');
+      show(data);
+    } catch (e) { say(e instanceof SyntaxError ? 'That .json file is not valid JSON.' : e.message, true); }
+    $('#go').disabled = false;
+  });
+
+  function show(data) {
+    profile = data;
+    sessionStorage.setItem(KEY, JSON.stringify(profile));
+    $('#start').hidden = true; $('#result').hidden = false;
+    $('#frame').src = 'view/?p=session&t=' + Date.now() + '#work';
+  }
+  $('#again').addEventListener('click', () => { $('#result').hidden = true; $('#editor').hidden = true; $('#start').hidden = false; $('#frame').src = 'about:blank'; });
+
+  // ponytail: editing is the raw JSON in a text box. A form per entry comes when people ask for it.
+  $('#edit').addEventListener('click', () => { $('#json').value = JSON.stringify(profile, null, 2); $('#edit-note').textContent = ''; $('#editor').hidden = false; $('#json').focus(); });
+  $('#close-edit').addEventListener('click', () => { $('#editor').hidden = true; });
+  $('#apply').addEventListener('click', () => {
+    let data;
+    try { data = JSON.parse($('#json').value); } catch (e) { $('#edit-note').textContent = 'Not valid JSON: ' + e.message; return; }
+    if (!valid(data)) { $('#edit-note').textContent = 'It needs a name and at least one entry.'; return; }
+    $('#edit-note').textContent = 'Applied.';
+    show(data);
+  });
+
+  const download = (name, text, type) => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  };
+  const slug = () => profile.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'profile';
+  $('#save-data').addEventListener('click', () => download(slug() + '.json', JSON.stringify(profile, null, 2), 'application/json'));
+  // The page: the viewer's three files and the data folded into one HTML file.
+  $('#save-page').addEventListener('click', async () => {
+    const [html, css, js] = await Promise.all(['view/index.html', 'view/style.css', 'view/graph.js'].map(u => fetch(u).then(r => r.text())));
+    const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const data = JSON.stringify(profile).replace(/</g, '\\u003c'); // so nothing in the data can close the script tag
+    download('index.html', html
+      .replace('<title>Profile</title>', () => `<title>${esc(profile.name)}</title>`)
+      .replace('<meta name="description" content="">', () => `<meta name="description" content="${esc([profile.name, profile.roleLine].filter(Boolean).join(': '))}">`)
+      .replace('<link rel="stylesheet" href="style.css">', () => `<style>${css}</style>`)
+      .replace('<script src="graph.js" defer><\/script>', () => `<script>window.PROFILE=${data}<\/script>\n<script>document.addEventListener('DOMContentLoaded',()=>{${js}})<\/script>`), 'text/html');
+  });
+})();
+</script>
 </body>
 </html>

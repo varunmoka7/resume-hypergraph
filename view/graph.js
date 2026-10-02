@@ -23,8 +23,8 @@
     kids.forEach(c => c && e.appendChild(c));
     return e;
   };
-  // the data file is written by a model from an uploaded resume: a link may only be a web address, a mail address or a local asset
-  const safeUrl = u => /^(https?:\/\/|mailto:|assets\/)/i.test(u || '') ? u : null;
+  // the data file is written by a model from an uploaded resume: a link may only be a web address, a mail address, a local asset or an embedded picture
+  const safeUrl = u => /^(https?:\/\/|mailto:|assets\/|data:image\/(png|jpeg|webp);base64,)/i.test(u || '') ? u : null;
   const initials = () => net.name.split(/\s+/).filter(Boolean).slice(0, 2).map(p => p[0].toUpperCase()).join('');
 
   // mark shapes: [path, radius]
@@ -443,9 +443,12 @@
 
   // ---------- start ----------
   async function start() {
-    // ?p=name picks data/name.json; the default is data/profile.json
+    // The data: baked into a downloaded page (window.PROFILE), handed over by the upload page (?p=session),
+    // or a file: ?p=name picks data/name.json, the default is data/profile.json.
     const file = (new URLSearchParams(location.search).get('p') || 'profile').replace(/[^\w-]/g, '');
-    try { net = clean(await fetch(`data/${file}.json`).then(r => { if (!r.ok) throw r; return r.json(); })); } catch { return; }
+    try {
+      net = clean(window.PROFILE || (file === 'session' ? JSON.parse(sessionStorage.getItem('resume-hypergraph')) : await fetch(`data/${file}.json`).then(r => { if (!r.ok) throw r; return r.json(); })));
+    } catch { return; }
     fillPage();
     wireLanding();
     wirePanel();
