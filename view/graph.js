@@ -10,6 +10,7 @@
 
   let net = null, svg, parts, netState = null, panelFor = null, lastFocus = null;
   let graphOpen = false, glide = null, groundStarted = false;
+  const EASE = 'cubic-bezier(.45, 0, .25, 1)';
 
   const el = (tag, attrs = {}, parent) => {
     const e = document.createElementNS(NS, tag);
@@ -133,11 +134,12 @@
       unfoldTimed();
       $('.stage').focus({ preventScroll: true });
     };
-    if (reduce || !window.gsap || !push) { window.gsap?.set(btn, { clearProps: 'transform' }); done(); return; }
+    glide?.cancel();
+    if (reduce || !push) return done();
     // the landing photo glides and shrinks from the centre to its place in the graph
     const r = btn.getBoundingClientRect(), { x: px, y: py } = parts.photo;
-    if (glide) glide.kill();
-    glide = gsap.to(btn, { x: px - (r.left + r.width / 2), y: py - (r.top + r.height / 2), scale: 2 * parts.photoR / r.width, duration: 0.8, ease: 'power2.inOut', onComplete: done });
+    glide = btn.animate({ transform: ['none', `translate(${px - (r.left + r.width / 2)}px, ${py - (r.top + r.height / 2)}px) scale(${2 * parts.photoR / r.width})`] }, { duration: 800, easing: EASE, fill: 'forwards' });
+    glide.onfinish = done;
   }
   function closeGraph() {
     if (!graphOpen) return;
@@ -148,11 +150,12 @@
     btn.style.visibility = '';
     hideAll();
     document.body.classList.remove('graph-on');
-    if (glide) glide.kill();
-    if (reduce || !window.gsap) { if (window.gsap) gsap.set(btn, { clearProps: 'transform' }); btn.focus({ preventScroll: true }); return; }
-    gsap.set(btn, { clearProps: 'transform' });
-    const to = btn.getBoundingClientRect();
-    glide = gsap.fromTo(btn, { x: from.left + from.width / 2 - (to.left + to.width / 2), y: from.top + from.height / 2 - (to.top + to.height / 2), scale: from.width / to.width }, { x: 0, y: 0, scale: 1, duration: 0.8, ease: 'power2.inOut', onComplete: () => { gsap.set(btn, { clearProps: 'transform' }); btn.focus({ preventScroll: true }); } });
+    glide?.cancel();
+    if (!reduce) {
+      const to = btn.getBoundingClientRect();
+      glide = btn.animate({ transform: [`translate(${from.left + from.width / 2 - (to.left + to.width / 2)}px, ${from.top + from.height / 2 - (to.top + to.height / 2)}px) scale(${from.width / to.width})`, 'none'] }, { duration: 800, easing: EASE });
+    }
+    btn.focus({ preventScroll: true });
   }
   // Back button, Escape and the photo in the graph all return to the landing through history
   function leaveGraph() {

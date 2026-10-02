@@ -1,0 +1,9 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "resume-hypergraph",
+  "description": "Resume to graph page.",
+  "owner": { "name": "Varun Moka" },
+  "plugins": [
+    { "name": "resume-graph", "description": "Turn a resume into an interactive graph page for a personal website.", "source": "./", "category": "productivity" }
+  ]
+}

@@ -13,7 +13,7 @@
       "kind": "Senior Product Manager · Mar 2022 to today", "months": 55,
       "text": "Owns the driver app and the routing service for a parcel carrier.",
       "role": "Senior Product Manager", "period": "Mar 2022 to today", "location": "Hamburg",
-      "org": { "description": "Parcelway is a made-up parcel carrier used as sample data.", "about": "Logistics", "hq": "Hamburg, Germany", "url": "https://example.com" },
+      "org": { "description": "Parcelway is a made-up parcel carrier used as sample data.", "about": "Logistics", "hq": "Hamburg, Germany", "url": "https://example.com", "source": "https://example.com" },
       "sections": [
         { "title": "Driver app", "items": ["Rewrote the stop-sequence screen after riding along on twelve routes.", "Cut failed first delivery attempts from 9% to 6%."] },
         { "title": "Routing", "items": ["Moved route planning from nightly batches to planning on demand."] }
