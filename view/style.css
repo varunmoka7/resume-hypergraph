@@ -201,6 +201,7 @@ svg .photo-initials { font: 600 26px/1 var(--sans); fill: var(--text); }
   .js .stage { position: absolute; inset: 0; height: auto; outline: none; }
   .js .contact { display: none; }
   .js .made { position: fixed; left: var(--gutter); bottom: 16px; z-index: 4; padding: 0; }
+  .js .panel-open .made { visibility: hidden; } /* the graph pans when the panel opens and can slide under the link */
   .js .topline {
     display: flex; align-items: center; gap: 16px 24px; flex-wrap: wrap;
     position: absolute; top: 20px; left: var(--gutter); right: var(--gutter); z-index: 3;
