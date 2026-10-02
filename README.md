@@ -67,7 +67,7 @@ work and have not been tried.
 |---|---|---|
 | Codex | Clone this repo, open it in Codex and say "turn my resume at ~/cv.pdf into a graph". `AGENTS.md` tells it what to do. | Yes |
 | Cursor and others | Same as Codex: clone, open, ask. | No |
-| Claude on the web | Download [resume-graph.zip](https://github.com/varunmoka7/resume-hypergraph/releases/latest/download/resume-graph.zip) and upload it under Settings, Capabilities, Skills. Then share your resume in a chat and ask for a graph. | No |
+| Claude on the web | Download [resume-graph.zip](https://github.com/varunmoka7/resume-hypergraph/releases/latest/download/resume-graph.zip) and upload it under Settings, Capabilities, Skills. Then share your resume in a chat and ask for a graph. Logos are left out there, because the Claude app cannot reach company websites. | Yes |
 | Gemini CLI | `gemini extensions install https://github.com/varunmoka7/resume-hypergraph` | No |
 | Tools with a skills folder | `sh scripts/pack-skill.sh`, then copy `dist/resume-graph` into the folder (`~/.codex/skills/` for Codex, `~/.agents/skills/` is common). | No |
 | No AI tool | Write `profile.json` by hand (format: `skills/resume-graph/PROFILE-FORMAT.md`) and run `node scripts/profile.mjs build my-profile.json index.html` | Yes |
@@ -155,10 +155,12 @@ Early release. What has been run so far:
 - **Claude Code:** the two install commands above were run against GitHub, and the plugin was
   run from start to finish, twice, on the made-up resume in `examples/`.
 - **Codex:** run from a clone of this repo on the same resume.
+- **Claude on the web:** the zip was uploaded as a skill and run on a real one-page PDF resume. It
+  built the page without logos, and Claude showed it as an artifact.
 - **The page:** checked in Chrome at four screen sizes, from phone to desktop.
 - **The scripts:** on Node 26, on macOS.
 
-Not tried yet: Claude on the web, Gemini CLI, Cursor, copying the skill into a skills folder,
+Not tried yet: Word files, Gemini CLI, Cursor, copying the skill into a skills folder,
 other browsers, other Node versions, Windows and Linux.
 
 Issues and pull requests are welcome. If the tool trips on your resume, describe the section
