@@ -7,7 +7,7 @@ one sentence saying what was done there with it.
 
 The result is one HTML file. Plain HTML, CSS and JavaScript, no build step, no libraries. The fonts are inside the file, so the page loads nothing from another site.
 
-![The graph of a made-up product manager with the skill "User research" open: a band joins the three places it was used, and the panel gives one sentence for each](docs/graph.png)
+![The author's own resume as a graph, built with this tool, with the skill "Logistics and supply chain" open: a band joins every place it was used, and the panel gives one sentence for each](docs/graph.png)
 
 The page carries a small "Made with resume-hypergraph" link in one corner; `"credit": false` in the data file removes it.
 

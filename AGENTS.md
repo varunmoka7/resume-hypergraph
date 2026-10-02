@@ -23,4 +23,4 @@ To try it on a made-up resume: `examples/lena-hoffmann-resume.txt`.
 - After changing `view/`, run `python3 scripts/serve.py 8131` and `browser-harness < scripts/check-layout.py` (every sample, four screen sizes, no overlapping labels).
 - After changing `scripts/profile.mjs` or the data format, run `node --test scripts/` (it also checks each file in `view/data/`).
 - The data format is defined once, in `skills/resume-graph/PROFILE-FORMAT.md`.
-- Sample people and companies are made up. Do not add a real person's resume to the repository. The picture in `docs/` shows a made-up sample too.
+- Sample people and companies are made up. Do not add a real person's resume to the repository. The picture in `docs/` is the author's own graph, by his choice; its data file stays out of the repository.
