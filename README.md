@@ -97,10 +97,21 @@ work and have not been tried.
 
 ## Privacy
 
-There is no server behind this tool. Your resume is read by the AI assistant you run it in,
-under that assistant's own terms. The tool adds only the lookups for the organisations named on
-your resume: a web search, a visit to each organisation's website, and a request to Google's
-favicon service when a site has no logo of its own.
+There is no server behind this tool, and it keeps nothing. Your resume is read by the AI
+assistant you run it in, under that assistant's own terms. The files it writes (`profile.json`,
+`index.html` and a text copy of your resume) stay in your own folder.
+
+The tool contacts other sites only for these lookups:
+
+- a web search for each organisation named on your resume, and a visit to its website
+- a request to Google's favicon service when a site has no logo of its own
+- one request to each web address shown on your page, such as your LinkedIn or GitHub link, to
+  check that it still opens
+
+## Security
+
+To report a security problem, use "Report a vulnerability" on this repository's Security tab,
+or open an issue if it is not sensitive.
 
 ## The page
 
