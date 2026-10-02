@@ -30,6 +30,7 @@ export function check(d, resume) {
     skillIds.add(k.id);
     if (!str(k.label)) errors.push(`skill ${k.id} has no label`);
     if (!str(k.intro)) warnings.push(`skill ${k.id} has no intro`);
+    if (str(k.label) && k.label.length > 28) warnings.push(`skill ${k.id}: label is ${k.label.length} characters; long skill labels squeeze every other label on the page, aim for under 25`);
   }
   for (const n of nodes) {
     if (!ID.test(n.id || '') || n.id === 'me') errors.push(`node id "${n.id}" must be lowercase letters, digits and hyphens`);
