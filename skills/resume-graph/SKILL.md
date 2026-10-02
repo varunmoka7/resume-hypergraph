@@ -1,6 +1,6 @@
 ---
 name: resume-graph
-description: Turn a resume or CV into an interactive graph page for a personal website. The person sits in the centre, their jobs, studies and projects sit around them in groups, and each skill connects every place it was used with one sentence of evidence. Use when someone shares a resume (PDF, Word, text, JSON Resume) and asks to "turn my resume into a graph", "make a hypergraph of my CV", "build my resume graph", "make a portfolio page from my resume", or runs /resume-graph.
+description: Turn a resume or CV into an interactive graph page for a personal website. The person sits in the centre, their jobs, studies and projects sit around them in groups, and each skill connects every place it was used with one sentence of evidence. Use when someone shares a resume (PDF, Word, text, JSON Resume) and asks to "turn my resume into a graph", "make a hypergraph of my CV", "build my resume graph", "make a portfolio page from my resume", runs /resume-graph, or later asks to put that page online.
 ---
 
 # Resume graph
@@ -35,7 +35,7 @@ Work in a folder named `resume-graph/` in the current directory unless told othe
 3. **Logos.** `node ROOT/scripts/profile.mjs logos resume-graph/profile.json`. It takes each organisation's icon from its own website (through `org.url`) and stores it in the node, so the mark in the graph and the panel show the logo. Entries it finds nothing for keep the plain shape. Without network access, skip it.
 4. **Skills** (`steps/skills.md`). With all nodes final, choose the skills and write the `uses` sentences.
 5. **Check** (`steps/check.md`). Run the script and fix every error. Then start a `checker` agent with ROOT and the two file paths for the read-through (no such agent: an ordinary subagent that has not seen your drafts; no subagents: read it through yourself). Fix what it finds and rerun the script.
-6. **Publish** (`steps/publish.md`). Build `resume-graph/index.html` and open it in the person's browser.
+6. **Publish** (`steps/publish.md`). Build `resume-graph/index.html` and open it in the person's browser. If they then ask to put it online, the last part of that file says how.
 
 ## What to say at the end
 

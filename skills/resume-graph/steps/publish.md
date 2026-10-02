@@ -20,10 +20,31 @@ Open `resume-graph/index.html` in the person's browser: `open` on a Mac, `xdg-op
 
 Tell the person:
 
-- The page is one file. Uploading it to any web host puts it online: their own site, GitHub Pages, Netlify, Vercel. To show it inside an existing page, an `<iframe>` pointing at it works.
+- The page is one file. If they want a link to share, they can say "put it online" and you will do it (see below). It also works on any web host, or inside an existing page through an `<iframe>`.
 - `profile.json` is the source. To change anything, edit it (or ask you to) and build again.
 - Logos belong to their organisations. To drop one, delete that node's `logo` and build again.
 - The page has a small "Made with resume-hypergraph" link in the corner. To drop it, set `"credit": false` in `profile.json` and build again.
 - It is a public page once uploaded. They should read it once as a stranger would before they do.
 
 Do not upload or deploy it yourself unless they ask you to.
+
+## Put it online, when they ask
+
+Only `index.html` goes online. Never upload `resume.txt` or the resume itself: they hold the private details the page leaves out.
+
+Use the first of these that works, and do not ask which:
+
+1. **An artifact**, if your tool can publish one (the Claude app, Claude Code). Publish `resume-graph/index.html` as it is. It stays private until they share it, so tell them to open the artifact's Share menu to get a link other people can open.
+2. **GitHub Pages**, if `gh auth status` shows they are logged in:
+
+   ```
+   mkdir resume-graph/site && cp resume-graph/index.html resume-graph/site/ && cd resume-graph/site
+   git init -q -b main && git add index.html && git commit -q -m "Resume graph"
+   gh repo create resume-graph --public --source . --push
+   gh api -X POST "repos/{owner}/{repo}/pages" -f "source[branch]=main" -f "source[path]=/"
+   ```
+
+   If the name `resume-graph` is taken in their account, use another one. The last command prints the address as `html_url`, `https://<their-name>.github.io/resume-graph/`. It takes a minute or two to come up: request it until it answers before you hand it over. To update the page later, copy the new `index.html` into `resume-graph/site`, commit and `git push`.
+3. **By hand**, if neither works: tell them to open https://app.netlify.com/drop and drag `resume-graph/index.html` onto it.
+
+Then give them the link, and say once that anyone who has it can read the page.

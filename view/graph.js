@@ -27,6 +27,8 @@
   // the data file is written by a model from an uploaded resume: a link may only be a web address, a mail address, a local asset or an embedded picture
   const safeUrl = u => /^(https?:\/\/|mailto:|assets\/|data:image\/(png|jpeg|webp);base64,)/i.test(u || '') ? u : null;
   const initials = () => net.name.split(/\s+/).filter(Boolean).slice(0, 2).map(p => p[0].toUpperCase()).join('');
+  // in the panel, an organisation without a logo shows its initials: "University of Leipzig" is UL
+  const orgInitials = s => ((s || '').match(/[\p{L}\p{N}]+/gu) || []).filter(w => !/^(of|the|and|for|der|die|das|und|von|de|la|le)$/i.test(w)).slice(0, 2).map(w => w[0].toUpperCase()).join('');
 
   // mark shapes: [path, radius]
   const SHAPES = {
@@ -344,7 +346,7 @@
     const myRows = [...row(edu ? 'Degree' : 'Position', n.role), ...row('Period', n.period), ...row('Grade', n.grade), ...row('Location', n.location)];
     return [
       myRows.length ? null : h('p', { class: 'meta', text: n.kind }),
-      h('div', { class: 'panel-head' }, [logo ? h('img', { src: logo, alt: '', class: 'panel-logo' }) : null, h('h2', { id: 'panel-title', text: n.label })]),
+      h('div', { class: 'panel-head' }, [logo ? h('img', { src: logo, alt: '', class: 'panel-logo' }) : n.org ? h('span', { class: 'panel-logo panel-initials', 'aria-hidden': 'true', text: orgInitials(n.label) }) : null, h('h2', { id: 'panel-title', text: n.label })]),
       ...(o.description || orgRows.length ? [h('h3', { class: 'part', text: 'Profile' }), o.description ? h('p', { class: 'about', text: o.description }) : null, orgRows.length ? h('dl', { class: 'profile' }, orgRows) : null] : []),
       ...(myRows.length ? [h('h3', { class: 'part', text: edu ? 'My degree' : 'My role' }), h('dl', { class: 'profile mine' }, myRows), h('h3', { class: 'part', text: edu ? 'Studies' : 'Work' })] : []),
       h('p', { class: 'summary', text: n.text }),

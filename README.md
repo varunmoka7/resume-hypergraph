@@ -25,12 +25,14 @@ around you, and every skill is connected to the places you used it.
   page.
 - **Free.** Open source, no account, no subscription.
 
-### For recruiters and hiring managers
+### For the person reading your page
 
-- **Click a skill** to see every place the candidate used it and what they did there, without
-  searching the whole resume.
-- **Click an employer or school** to see what the organisation does, the candidate's role and
-  dates, and the work they did.
+A recruiter or hiring manager who opens your link can:
+
+- **Click a skill** to see every place you used it and what you did there, without searching
+  your whole resume.
+- **Click an employer or school** to see what the organisation does, your role and dates, and
+  the work you did.
 - **Opens in a web browser.** Nothing to install. On a phone the same content is shown as a
   simple list.
 
@@ -48,13 +50,18 @@ You need an AI coding assistant. The steps below are for
 
 3. Say: **"turn my resume into a graph"**
 
-It asks no questions. A short resume takes a few minutes. When it finishes, the page opens in
+It asks no questions. A resume takes about 3 to 5 minutes. When it finishes, the page opens in
 your browser and you have a new folder, `resume-graph/`, with two files:
 
 | File | What it is |
 |---|---|
-| `index.html` | Your page. Upload it to any web host to put it online. |
+| `index.html` | Your page. It opens straight from the file. |
 | `profile.json` | The data behind the page. Edit it, or ask the assistant to, and rebuild. |
+
+4. To get a link you can share, say: **"put it online"**
+
+   It publishes the page as a Claude artifact, or on GitHub Pages if you are logged in to
+   GitHub's `gh` tool. Only the page goes online, never your resume file.
 
 To name the file yourself: `/resume-graph:resume-graph my-cv.pdf`
 
@@ -93,7 +100,8 @@ work and have not been tried.
   kept. Your email address is added only if you say yes.
 - **Guess about organisations.** If it cannot find an employer or school, it leaves the
   description out.
-- **Upload anything.** It builds a file on your computer. Putting it online is your decision.
+- **Upload anything unasked.** It builds a file on your computer. It goes online only when
+  you say "put it online".
 
 ## Privacy
 
@@ -133,7 +141,7 @@ In Claude Code every step is also available on its own, for redoing part of a gr
 | `/resume-graph:company` | Research one organisation and write that entry's panel |
 | `/resume-graph:skills` | Choose the skills and write one sentence per place used |
 | `/resume-graph:check` | Check every sentence against the resume |
-| `/resume-graph:publish` | Build the page |
+| `/resume-graph:publish` | Build the page, and put it online when asked |
 
 ## Development
 
@@ -164,7 +172,11 @@ made up.
 Early release. What has been run so far:
 
 - **Claude Code:** the two install commands above were run against GitHub, and the plugin was
-  run from start to finish, twice, on the made-up resume in `examples/`.
+  run from start to finish, twice, on the made-up resume in `examples/`. It was also run on two
+  made-up PDF resumes: a two-column engineer's CV and a two-page nurse's resume. Each took 3 to
+  5 minutes.
+- **Put it online:** run in Claude Code, where it published the page as a private artifact. The
+  GitHub Pages commands were run by hand on a made-up page and the page came up.
 - **Codex:** run from a clone of this repo on the same resume.
 - **Claude on the web:** the zip was uploaded as a skill and run on a real one-page PDF resume. It
   built the page without logos, and Claude showed it as an artifact.

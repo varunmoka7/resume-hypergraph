@@ -163,7 +163,8 @@ svg .photo-initials { font: 600 26px/1 var(--sans); fill: var(--text); }
 .tag:hover, .tag:focus-visible { color: var(--moss); text-decoration-color: var(--moss); }
 .panel-head { display: flex; align-items: center; gap: 14px; margin-top: 8px; }
 .panel-head h2 { margin-top: 0; }
-.panel-logo { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; background: #fff; }
+.panel-logo { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; background: #fff; flex: none; }
+.panel-initials { display: grid; place-items: center; background: var(--muted); color: var(--bg); font: 600 15px/1 var(--sans); }
 .panel .summary, .panel .about { margin-top: 16px; }
 .panel h4.sub { font: 600 17px/1.6 var(--sans); margin-top: 24px; }
 .panel .uses .use { margin-top: 4px; }
