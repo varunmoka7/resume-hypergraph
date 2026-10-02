@@ -8,7 +8,7 @@ node ROOT/scripts/profile.mjs build resume-graph/profile.json resume-graph/index
 
 This checks the data again and writes one HTML file with the styles, the script and the data inside it.
 
-If `node` is not available, make the file by hand from `ROOT/view/index.html`: put the person's name in `<title>`, replace the stylesheet link with a `<style>` holding `view/style.css`, and replace the `graph.js` script tag with two inline scripts, the first `window.PROFILE = ` followed by the JSON with every `<` character written as `<` (so nothing in the data can close the script tag), the second `view/graph.js` wrapped in `document.addEventListener('DOMContentLoaded', () => { ... })`.
+If `node` is not available, make the file by hand from `ROOT/view/index.html`: put the person's name in `<title>`, replace the stylesheet link with a `<style>` holding `view/style.css`, and replace the `graph.js` script tag with two inline scripts, the first `window.PROFILE = ` followed by the JSON with every `<` character written as `\u003c` (so nothing in the data can close the script tag), the second `view/graph.js` wrapped in `document.addEventListener('DOMContentLoaded', () => { ... })`.
 
 A photo: if the person gave one, shrink it to about 400 by 400 pixels, and set `photo` to it as an embedded `data:image/jpeg;base64,...` value before building. Without one the page shows their initials. Do not take a photo out of the resume unasked.
 

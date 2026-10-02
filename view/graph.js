@@ -450,7 +450,7 @@
     const file = (new URLSearchParams(location.search).get('p') || 'profile').replace(/[^\w-]/g, '');
     try {
       net = clean(window.PROFILE || await fetch(`data/${file}.json`).then(r => { if (!r.ok) throw r; return r.json(); }));
-    } catch { return; }
+    } catch { $('h1').textContent = 'This profile could not be loaded.'; return; }
     fillPage();
     wireLanding();
     wirePanel();

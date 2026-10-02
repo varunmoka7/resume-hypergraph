@@ -14,16 +14,18 @@ const ID = /^[a-z0-9][a-z0-9-]*$/;
 const PRIVATE = [
   [{ test: t => (t.match(/\+?\d[\d\s().\/-]{7,}\d/g) || []).some(m => m.replace(/\D/g, '').length >= 9) }, 'looks like a phone number'], // nine digits or more, so "2014 - 2016" passes
   [/\b(date of birth|born on|born in|d\.o\.b|geboren|geburtsdatum)\b/i, 'date or place of birth'],
-  [/\b(marital status|married|unmarried|single|verheiratet|ledig|familienstand)\b/i, 'marital status'],
+  [/\b(marital status|married|unmarried|verheiratet|ledig|familienstand)\b/i, 'marital status'], // not "single": it is in "single-page app"
   [/\b(religion|caste|father'?s name|nationality:|staatsangehörigkeit)\b/i, 'personal detail'],
 ];
+const GROUPS = 'work education projects venture freelance publications teaching talks exhibitions credentials awards service volunteering personal other'.split(' '); // same ids as view/graph.js
 
 export function check(d, resume) {
   const errors = [], warnings = [], str = v => typeof v === 'string' && v.trim();
+  const list = (v, what) => { if (v == null || Array.isArray(v)) return v || []; if (what) errors.push(`${what} must be a list`); return []; }; // the page calls .map and .join on these
   if (!str(d.name)) errors.push('name is missing');
-  if (!Array.isArray(d.nodes) || !d.nodes.length) errors.push('nodes is empty');
-  const nodes = d.nodes || [], skills = d.skills || [];
-  const nodeIds = new Set(), skillIds = new Set();
+  const nodes = list(d.nodes, 'nodes'), skills = list(d.skills, 'skills');
+  if (!nodes.length && !errors.includes('nodes must be a list')) errors.push('nodes is empty');
+  const nodeIds = new Set(), skillIds = new Set(), groupIds = new Set([...GROUPS, ...list(d.groups, 'groups').map(g => g.id)]);
   for (const k of skills) {
     if (!ID.test(k.id || '')) errors.push(`skill id "${k.id}" must be lowercase letters, digits and hyphens`);
     if (skillIds.has(k.id)) errors.push(`skill id "${k.id}" is used twice`);
@@ -39,7 +41,10 @@ export function check(d, resume) {
     for (const f of ['group', 'label', 'kind', 'text']) if (!str(n[f])) errors.push(`node ${n.id} has no ${f}`);
     if (str(n.label) && n.label.length > 60) warnings.push(`node ${n.id}: label is ${n.label.length} characters and will be cut on screen; put the full name in org.description`);
     if (n.months != null && !(n.months > 0)) errors.push(`node ${n.id}: months must be a positive number`);
-    for (const k of n.skills || []) {
+    if (str(n.group) && !groupIds.has(n.group)) errors.push(`node ${n.id}: group "${n.group}" is not a standard group and is not named in groups`);
+    list(n.technology, `node ${n.id}: technology`);
+    for (const s of list(n.sections, `node ${n.id}: sections`)) if (!str(s.title) || !Array.isArray(s.items)) errors.push(`node ${n.id}: every section needs a title and a list of items`);
+    for (const k of list(n.skills, `node ${n.id}: skills`)) {
       if (!skillIds.has(k)) errors.push(`node ${n.id} names unknown skill "${k}"`);
       else if (!str((skills.find(x => x.id === k).uses || {})[n.id])) errors.push(`skill ${k} has no "uses" sentence for node ${n.id}`); // the sentence is the point of the graph
     }
@@ -48,19 +53,20 @@ export function check(d, resume) {
   }
   for (const n of nodes) if (n.parent && !nodeIds.has(n.parent)) errors.push(`node ${n.id} names unknown parent "${n.parent}"`);
   for (const k of skills) {
-    const users = nodes.filter(n => (n.skills || []).includes(k.id));
+    const users = nodes.filter(n => list(n.skills).includes(k.id));
     if (!users.length) warnings.push(`skill ${k.id} is not used by any node and will sit unconnected`);
     for (const id of Object.keys(k.uses || {})) if (!users.some(n => n.id === id)) errors.push(`skill ${k.id} has a "uses" sentence for ${id}, which does not list this skill`);
   }
-  for (const g of d.groups || []) if (!str(g.id) || !str(g.label)) errors.push('every entry in groups needs an id and a label');
-  for (const l of d.links || []) if (!str(l.label) || !SAFE_URL.test(l.url || '')) errors.push(`link "${l.label}" needs a label and a web or mail address`);
+  for (const g of list(d.groups)) if (!str(g.id) || !str(g.label)) errors.push('every entry in groups needs an id and a label');
+  for (const l of list(d.links, 'links')) if (!str(l.label) || !SAFE_URL.test(l.url || '')) errors.push(`link "${l.label}" needs a label and a web or mail address`);
   for (const u of [d.photo, d.cv]) if (u && !SAFE_URL.test(u)) errors.push(`"${String(u).slice(0, 60)}" is not a usable path`);
   if (skills.length > 24) warnings.push(`${skills.length} skills: more than 24 gets hard to read`);
 
-  // every sentence the page shows, with where it sits
+  // everything the page says about the person, with where it sits. Not org (that comes from the web) and not a skill's intro (that is about the skill).
   const texts = [['roleLine', d.roleLine], ['next', d.next],
-    ...nodes.flatMap(n => [[`node ${n.id} text`, n.text], [`node ${n.id} kind`, n.kind], [`node ${n.id} location`, n.location], ...(n.sections || []).flatMap(s => (s.items || []).map(it => [`node ${n.id} "${s.title}"`, it]))]),
-    ...skills.flatMap(k => Object.entries(k.uses || {}).map(([id, t]) => [`skill ${k.id} at ${id}`, t]))].filter(([, t]) => str(t));
+    ...nodes.flatMap(n => [...['label', 'kind', 'text', 'role', 'period', 'grade', 'location'].map(f => [`node ${n.id} ${f}`, n[f]]), ...list(n.technology).map(t => [`node ${n.id} technology`, t]),
+      ...list(n.sections).flatMap(s => [[`node ${n.id} section title`, s.title], ...list(s.items).map(it => [`node ${n.id} "${s.title}"`, it])])]),
+    ...skills.flatMap(k => [[`skill ${k.id} label`, k.label], ...Object.entries(k.uses || {}).map(([id, t]) => [`skill ${k.id} at ${id}`, t])])].filter(([, t]) => str(t));
   for (const [where, t] of texts) for (const [re, what] of PRIVATE) if (re.test(t)) warnings.push(`${where}: ${what}? "${t.slice(0, 70)}"`);
   if (resume) { // a number the resume never states was made up or mistyped
     const have = new Set(resume.match(/\d[\d.,]*\d|\d/g) || []), plain = s => s.replace(/[.,]/g, '');
@@ -145,7 +151,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     const { errors, warnings } = check(d, resumeFile ? fs.readFileSync(resumeFile, 'utf8') : null);
     warnings.forEach(w => console.log('warning: ' + w));
     errors.forEach(e => console.log('error:   ' + e));
-    console.log(`${file}: ${(d.nodes || []).length} entries, ${(d.skills || []).length} skills, ${errors.length} errors, ${warnings.length} warnings`);
+    console.log(`${file}: ${Array.isArray(d.nodes) ? d.nodes.length : 0} entries, ${Array.isArray(d.skills) ? d.skills.length : 0} skills, ${errors.length} errors, ${warnings.length} warnings`);
     if (errors.length) process.exit(1);
     if (isBuild) {
       fs.writeFileSync(a, build(d, path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'view')));
